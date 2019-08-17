@@ -2,7 +2,7 @@ const {EXRLoader, EquirectangularToCubeGenerator, PMREMGenerator, PMREMCubeUVPac
 const container = document.getElementById("canvas");
 
 const params = {
-  envMap: 'EXR',
+  envMap: 'PNG',
   roughness: 0.0,
   metalness: 1.0,
   exposure: 1.0,
