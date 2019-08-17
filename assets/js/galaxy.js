@@ -23,6 +23,8 @@ var water, light;
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
+    light = new THREE.DirectionalLight( 0xffffff, 0.8 );
+    scene.add( light );
     // Textures
     var r = "https://cherscarlett.github.io/assets/env/";
     var urls = [ r + "posx.jpg", r + "negx.jpg",
@@ -54,7 +56,26 @@ var water, light;
         return this.uniforms.tEquirect.value;
       }
     } );
-
+    // Water
+				var waterGeometry = new THREE.PlaneBufferGeometry( 10000, 10000 );
+				water = new THREE.Water(
+					waterGeometry,
+					{
+						textureWidth: 512,
+						textureHeight: 512,
+						waterNormals: new THREE.TextureLoader().load( 'https://threejs.org/examples/textures/waternormals.jpg', function ( texture ) {
+							texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+						} ),
+						alpha: 1.0,
+						sunDirection: light.position.clone().normalize(),
+						sunColor: 0xffffff,
+						waterColor: 0x001e0f,
+						distortionScale: 3.7,
+						fog: scene.fog !== undefined
+					}
+				);
+				water.rotation.x = - Math.PI / 2;
+				scene.add( water );
     // Skybox
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
     sceneCube.add( cubeMesh );
