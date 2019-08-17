@@ -10,7 +10,7 @@ const params = {
   
 var controls, camera, scene, renderer;
 var cameraCube, sceneCube;
-var textureEquirec, textureCube, textureSphere;
+var textureEquirec;
 var cubeMesh, sphereMesh;
 var sphereMaterial;
 
@@ -29,23 +29,13 @@ function init() {
 				var ambient = new THREE.AmbientLight( 0xffffff );
 				scene.add( ambient );
 				// Textures
-				var r = "textures/cube/Bridge2/";
-				var urls = [ r + "posx.jpg", r + "negx.jpg",
-							 r + "posy.jpg", r + "negy.jpg",
-							 r + "posz.jpg", r + "negz.jpg" ];
-				textureCube = new THREE.CubeTextureLoader().load( urls );
-				textureCube.format = THREE.RGBFormat;
-				textureCube.mapping = THREE.CubeReflectionMapping;
-				textureCube.encoding = THREE.sRGBEncoding;
 				var textureLoader = new THREE.TextureLoader();
 				textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
 				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
 				textureEquirec.magFilter = THREE.LinearFilter;
 				textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
 				textureEquirec.encoding = THREE.sRGBEncoding;
-				textureSphere = textureLoader.load( "textures/metal.jpg" );
-				textureSphere.mapping = THREE.SphericalReflectionMapping;
-				textureSphere.encoding = THREE.sRGBEncoding;
+				
 				// Materials
 				var equirectShader = THREE.ShaderLib[ "equirect" ];
 				var equirectMaterial = new THREE.ShaderMaterial( {
@@ -62,26 +52,12 @@ function init() {
 						return this.uniforms.tEquirect.value;
 					}
 				} );
-				var cubeShader = THREE.ShaderLib[ "cube" ];
-				var cubeMaterial = new THREE.ShaderMaterial( {
-					fragmentShader: cubeShader.fragmentShader,
-					vertexShader: cubeShader.vertexShader,
-					uniforms: cubeShader.uniforms,
-					depthWrite: false,
-					side: THREE.BackSide
-				} );
-				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
-				Object.defineProperty( cubeMaterial, 'map', {
-					get: function () {
-						return this.uniforms.tCube.value;
-					}
-				} );
-				// Skybox
-				cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), cubeMaterial );
+        // Skybox
+				cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), textureEquirec );
 				sceneCube.add( cubeMesh );
 				//
 				var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
-				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureEquirec } );
 				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 				scene.add( sphereMesh );
 				//
@@ -97,21 +73,10 @@ function init() {
 				controls.maxDistance = 2500;
 				//
 				var params = {
-					Cube: function () {
-						cubeMesh.material = cubeMaterial;
-						cubeMesh.visible = true;
-						sphereMaterial.envMap = textureCube;
-						sphereMaterial.needsUpdate = true;
-					},
 					Equirectangular: function () {
 						cubeMesh.material = equirectMaterial;
 						cubeMesh.visible = true;
 						sphereMaterial.envMap = textureEquirec;
-						sphereMaterial.needsUpdate = true;
-					},
-					Spherical: function () {
-						cubeMesh.visible = false;
-						sphereMaterial.envMap = textureSphere;
 						sphereMaterial.needsUpdate = true;
 					},
 					Refraction: false
