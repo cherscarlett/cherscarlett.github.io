@@ -37,9 +37,6 @@ var sphereMaterial;
     textureEquirec.magFilter = THREE.LinearFilter;
     textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
     textureEquirec.encoding = THREE.sRGBEncoding;
-    textureSphere = textureLoader.load( "https://cherscarlett.github.io/assets/env/metal.jpg" );
-    textureSphere.mapping = THREE.SphericalReflectionMapping;
-    textureSphere.encoding = THREE.sRGBEncoding;
     // Materials
     var equirectShader = THREE.ShaderLib[ "equirect" ];
     var equirectMaterial = new THREE.ShaderMaterial( {
@@ -56,20 +53,7 @@ var sphereMaterial;
         return this.uniforms.tEquirect.value;
       }
     } );
-    var cubeShader = THREE.ShaderLib[ "cube" ];
-    var cubeMaterial = new THREE.ShaderMaterial( {
-      fragmentShader: cubeShader.fragmentShader,
-      vertexShader: cubeShader.vertexShader,
-      uniforms: cubeShader.uniforms,
-      depthWrite: false,
-      side: THREE.BackSide
-    } );
-    cubeMaterial.uniforms[ "tCube" ].value = textureCube;
-    Object.defineProperty( cubeMaterial, 'map', {
-      get: function () {
-        return this.uniforms.tCube.value;
-      }
-    } );
+
     // Skybox
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
     sceneCube.add( cubeMesh );
@@ -90,40 +74,6 @@ var sphereMaterial;
     controls.minDistance = 500;
     controls.maxDistance = 2500;
     //
-    var params = {
-      Cube: function () {
-        cubeMesh.material = cubeMaterial;
-        cubeMesh.visible = true;
-        sphereMaterial.envMap = textureCube;
-        sphereMaterial.needsUpdate = true;
-      },
-      Equirectangular: function () {
-        cubeMesh.material = equirectMaterial;
-        cubeMesh.visible = true;
-        sphereMaterial.envMap = textureEquirec;
-        sphereMaterial.needsUpdate = true;
-      },
-      Spherical: function () {
-        cubeMesh.visible = false;
-        sphereMaterial.envMap = textureSphere;
-        sphereMaterial.needsUpdate = true;
-      },
-      Refraction: false
-    };
-    var gui = new dat.GUI();
-    gui.add( params, 'Cube' );
-    gui.add( params, 'Equirectangular' );
-    gui.add( params, 'Spherical' );
-    gui.add( params, 'Refraction' ).onChange( function ( value ) {
-      if ( value ) {
-        textureEquirec.mapping = THREE.EquirectangularRefractionMapping;
-        textureCube.mapping = THREE.CubeRefractionMapping;
-      } else {
-        textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
-        textureCube.mapping = THREE.CubeReflectionMapping;
-      }
-      sphereMaterial.needsUpdate = true;
-    } );
     window.addEventListener( 'resize', onWindowResize, false );
   }
   function onWindowResize() {
