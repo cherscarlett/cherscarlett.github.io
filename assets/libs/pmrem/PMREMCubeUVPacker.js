@@ -16,15 +16,11 @@
 const {
 	BackSide,
 	CubeUVReflectionMapping,
-	LinearToneMapping,
-	Mesh,
 	NoBlending,
 	OrthographicCamera,
 	PlaneBufferGeometry,
 	RGBEEncoding,
 	RGBM16Encoding,
-	Scene,
-	ShaderMaterial,
 	Vector2,
 	Vector3,
 	WebGLRenderTarget
