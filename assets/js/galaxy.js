@@ -9,15 +9,16 @@
   
   init();
   animate();
+
+  var params = {
+      envMap: 'EXR',
+      roughness: 0.0,
+      metalness: 0.0,
+      exposure: 1.0,
+      debug: false,
+  };
   
   function init() {
-    var params = {
-        envMap: 'EXR',
-				roughness: 0.0,
-				metalness: 0.0,
-        exposure: 1.0,
-        debug: false,
-    };
 	var pngCubeRenderTarget, exrCubeRenderTarget;
 	var pngBackground, exrBackground;
     
