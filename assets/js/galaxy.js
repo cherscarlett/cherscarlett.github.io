@@ -1,0 +1,97 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.min.js"></script>
+<script type="text/javascript" src="https://threejs.org/examples/js/loaders/EXRLoader.js"></script>
+<script type="text/javascript" src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+<script type="text/javascript" src="https://threejs.org/examples/js/loaders/EquirectangularToCubeGenerator.js"></script>
+<script type="text/javascript" src="https://cherscarlett.github.io/assets/libs/pmrem/PMREMGenerator.js"></script>
+<script type="text/javascript" src="https://cherscarlett.github.io/assets/libs/pmrem/PMREMCubeUVPacker.js"></script>
+<script type="text/javascript">
+  const {EXRLoader, EquirectangularToCubeGenerator, OrbitControls, PMREMGenerator, PMREMCubeUVPacker} = THREE;
+  const container = document.getElementById("canvas");
+  
+  var renderer, scene, camera;
+  
+  init();
+  
+  function init() {
+    var params = {
+        envMap: 'EXR',
+        exposure: 1.0,
+        debug: false,
+    };
+	var pngCubeRenderTarget, exrCubeRenderTarget;
+	var pngBackground, exrBackground;
+    
+    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera.position.set( 0, 0, 120 );
+    scene = new THREE.Scene();
+    renderer = new THREE.WebGLRenderer();
+    renderer.toneMapping = THREE.LinearToneMapping;
+    
+    
+    
+    new EXRLoader()
+      .setDataType( THREE.FloatType )
+      .load( 'https://cherscarlett.github.io/assets/env/galaxy.exr', function ( texture ) {
+          texture.minFilter = THREE.NearestFilter;
+          texture.encoding = THREE.LinearEncoding;
+          var cubemapGenerator = new EquirectangularToCubeGenerator( texture, { resolution: 512, type: THREE.HalfFloatType } );
+          exrBackground = cubemapGenerator.renderTarget;
+          var cubeMapTexture = cubemapGenerator.update( renderer );
+          var pmremGenerator = new PMREMGenerator( cubeMapTexture );
+          pmremGenerator.update( renderer );
+          var pmremCubeUVPacker = new PMREMCubeUVPacker( pmremGenerator.cubeLods );
+          pmremCubeUVPacker.update( renderer );
+          exrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
+          texture.dispose();
+          pmremGenerator.dispose();
+          pmremCubeUVPacker.dispose();
+      } );
+    
+    new THREE.TextureLoader().load( 'https://cherscarlett.github.io/assets/env/galaxy.png', function ( texture ) {
+        texture.encoding = THREE.sRGBEncoding;
+        var cubemapGenerator = new EquirectangularToCubeGenerator( texture, { resolution: 512 } );
+        pngBackground = cubemapGenerator.renderTarget;
+        var cubeMapTexture = cubemapGenerator.update( renderer );
+        var pmremGenerator = new PMREMGenerator( cubeMapTexture );
+        pmremGenerator.update( renderer );
+        var pmremCubeUVPacker = new PMREMCubeUVPacker( pmremGenerator.cubeLods );
+        pmremCubeUVPacker.update( renderer );
+        pngCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
+        texture.dispose();
+        pmremGenerator.dispose();
+        pmremCubeUVPacker.dispose();
+    } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+    container.appendChild( renderer.domElement );
+    renderer.gammaInput = false;
+	renderer.gammaOutput = true;
+    window.addEventListener( 'resize', onWindowResize, false );
+  }
+  
+  function onWindowResize() {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize( width, height );
+  }
+  
+  function render() {
+      var background = scene.background;
+      switch ( params.envMap ) {
+          case 'EXR':
+              background = exrBackground;
+              break;
+          case 'PNG':
+              background = pngBackground;
+              break;
+      }
+      scene.background = background;
+      renderer.toneMappingExposure = params.exposure;
+      renderer.render( scene, camera );
+  }
+
+  
+  
+</script>
