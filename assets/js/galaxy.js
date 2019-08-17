@@ -1,4 +1,4 @@
-const {OrbitControls, EXRLoader, EquirectangularToCubeGenerator, PMREMGenerator, PMREMCubeUVPacker} = THREE;
+const {OrbitControls} = THREE;
 const container = document.getElementById("canvas");
 
 const params = {
@@ -8,112 +8,132 @@ const params = {
   exposure: 1.0,
 };
   
-var renderer, scene, camera;
-var torusMesh;
-var pngCubeRenderTarget, exrCubeRenderTarget;
-var pngBackground, exrBackground;
+var controls, camera, scene, renderer;
+var cameraCube, sceneCube;
+var textureEquirec, textureCube, textureSphere;
+var cubeMesh, sphereMesh;
+var sphereMaterial;
 
 init();
 animate();
 
 function init() {
-  
-  camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
-  camera.position.set( 0, 0, 120 );
-  scene = new THREE.Scene();
-  renderer = new THREE.WebGLRenderer();
-  renderer.toneMapping = THREE.LinearToneMapping;
-  
-  var geometry = new THREE.TorusKnotBufferGeometry( 18, 8, 150, 20 );
-  var material = new THREE.MeshStandardMaterial( {
-    metalness: params.roughness,
-    roughness: params.metalness,
-    envMapIntensity: 1.0
-  } );
-  torusMesh = new THREE.Mesh( geometry, material );
-  scene.add( torusMesh );
-  var geometry = new THREE.PlaneBufferGeometry( 200, 200 );
-  var material = new THREE.MeshBasicMaterial();
-  
-  new EXRLoader()
-    .setDataType( THREE.FloatType )
-    .load( 'https://cherscarlett.github.io/assets/env/galaxy.exr', function ( texture ) {
-        texture.minFilter = THREE.NearestFilter;
-        texture.encoding = THREE.LinearEncoding;
-        var cubemapGenerator = new EquirectangularToCubeGenerator( texture, { resolution: 1024, type: THREE.HalfFloatType } );
-        exrBackground = cubemapGenerator.renderTarget;
-        var cubeMapTexture = cubemapGenerator.update( renderer );
-        var pmremGenerator = new PMREMGenerator( cubeMapTexture );
-        pmremGenerator.update( renderer );
-        var pmremCubeUVPacker = new PMREMCubeUVPacker( pmremGenerator.cubeLods );
-        pmremCubeUVPacker.update( renderer );
-        exrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
-        texture.dispose();
-        pmremGenerator.dispose();
-        pmremCubeUVPacker.dispose();
-    } );
-  
-  new THREE.TextureLoader().load( 'https://cherscarlett.github.io/assets/env/galaxy.png', function ( texture ) {
-      texture.encoding = THREE.sRGBEncoding;
-      var cubemapGenerator = new EquirectangularToCubeGenerator( texture, { resolution: 2048 } );
-      pngBackground = cubemapGenerator.renderTarget;
-      var cubeMapTexture = cubemapGenerator.update( renderer );
-      var pmremGenerator = new PMREMGenerator( cubeMapTexture );
-      pmremGenerator.update( renderer );
-      var pmremCubeUVPacker = new PMREMCubeUVPacker( pmremGenerator.cubeLods );
-      pmremCubeUVPacker.update( renderer );
-      pngCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
-      texture.dispose();
-      pmremGenerator.dispose();
-      pmremCubeUVPacker.dispose();
-  } );
+				// CAMERAS
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				camera.position.set( 0, 0, 1000 );
+				cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+				// SCENE
+				scene = new THREE.Scene();
+				sceneCube = new THREE.Scene();
+				// Lights
+				var ambient = new THREE.AmbientLight( 0xffffff );
+				scene.add( ambient );
+				// Textures
+				var r = "textures/cube/Bridge2/";
+				var urls = [ r + "posx.jpg", r + "negx.jpg",
+							 r + "posy.jpg", r + "negy.jpg",
+							 r + "posz.jpg", r + "negz.jpg" ];
+				textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.format = THREE.RGBFormat;
+				textureCube.mapping = THREE.CubeReflectionMapping;
+				textureCube.encoding = THREE.sRGBEncoding;
+				var textureLoader = new THREE.TextureLoader();
+				textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
+				textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+				textureEquirec.magFilter = THREE.LinearFilter;
+				textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
+				textureEquirec.encoding = THREE.sRGBEncoding;
+				textureSphere = textureLoader.load( "textures/metal.jpg" );
+				textureSphere.mapping = THREE.SphericalReflectionMapping;
+				textureSphere.encoding = THREE.sRGBEncoding;
+				// Materials
+				var equirectShader = THREE.ShaderLib[ "equirect" ];
+				var equirectMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: equirectShader.fragmentShader,
+					vertexShader: equirectShader.vertexShader,
+					uniforms: equirectShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+				equirectMaterial.uniforms[ "tEquirect" ].value = textureEquirec;
+				// enable code injection for non-built-in material
+				Object.defineProperty( equirectMaterial, 'map', {
+					get: function () {
+						return this.uniforms.tEquirect.value;
+					}
+				} );
+				var cubeShader = THREE.ShaderLib[ "cube" ];
+				var cubeMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: cubeShader.fragmentShader,
+					vertexShader: cubeShader.vertexShader,
+					uniforms: cubeShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+				cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+				Object.defineProperty( cubeMaterial, 'map', {
+					get: function () {
+						return this.uniforms.tCube.value;
+					}
+				} );
+				// Skybox
+				cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), cubeMaterial );
+				sceneCube.add( cubeMesh );
+				//
+				var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
+				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
+				scene.add( sphereMesh );
+				//
+				renderer = new THREE.WebGLRenderer();
+				renderer.autoClear = false;
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				renderer.gammaOutput = true;
+				//
+				controls = new OrbitControls( camera, renderer.domElement );
+				controls.minDistance = 500;
+				controls.maxDistance = 2500;
+				//
+				var params = {
+					Cube: function () {
+						cubeMesh.material = cubeMaterial;
+						cubeMesh.visible = true;
+						sphereMaterial.envMap = textureCube;
+						sphereMaterial.needsUpdate = true;
+					},
+					Equirectangular: function () {
+						cubeMesh.material = equirectMaterial;
+						cubeMesh.visible = true;
+						sphereMaterial.envMap = textureEquirec;
+						sphereMaterial.needsUpdate = true;
+					},
+					Spherical: function () {
+						cubeMesh.visible = false;
+						sphereMaterial.envMap = textureSphere;
+						sphereMaterial.needsUpdate = true;
+					},
+					Refraction: false
+				};
 
-  renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  container.appendChild( renderer.domElement );
-  renderer.gammaInput = false;
-  renderer.gammaOutput = true;
-  controls = new OrbitControls( camera, renderer.domElement );
-  controls.minDistance = 50;
-  controls.maxDistance = 300;
-
-  window.addEventListener( 'resize', onWindowResize, false );
-}
-
-function onWindowResize() {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-  renderer.setSize( width, height );
-}
-
-function animate() {
-  requestAnimationFrame( animate );
-  render();
-}
-
-function render() {
-  torusMesh.material.roughness = params.roughness;
-  torusMesh.material.metalness = params.metalness;
-  var newEnvMap = torusMesh.material.envMap;
-  var background = scene.background;
-  switch ( params.envMap ) {
-    case 'EXR':
-      newEnvMap = exrCubeRenderTarget ? exrCubeRenderTarget.texture : null;
-      background = exrBackground;
-      break;
-    case 'PNG':
-      newEnvMap = pngCubeRenderTarget ? pngCubeRenderTarget.texture : null;
-      background = pngBackground;
-      break;
-  }
-  if ( newEnvMap !== torusMesh.material.envMap ) {
-    torusMesh.material.envMap = newEnvMap;
-    torusMesh.material.needsUpdate = true;
-  }
-  torusMesh.rotation.y += 0.005;
-  scene.background = background;
-  renderer.toneMappingExposure = params.exposure;
-  renderer.render( scene, camera );
-}
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				cameraCube.aspect = window.innerWidth / window.innerHeight;
+				cameraCube.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			//
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+			}
+			function render() {
+				camera.lookAt( scene.position );
+				cameraCube.rotation.copy( camera.rotation );
+				renderer.render( sceneCube, cameraCube );
+				renderer.render( scene, camera );
+			}
