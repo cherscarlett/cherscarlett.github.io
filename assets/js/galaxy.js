@@ -83,7 +83,7 @@ var sphereMaterial;
     renderer.autoClear = false;
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    document.getElementById('canvas');.appendChild( renderer.domElement );
+    document.getElementById('canvas').appendChild( renderer.domElement );
     renderer.gammaOutput = true;
     //
     controls = new OrbitControls( camera, renderer.domElement );
