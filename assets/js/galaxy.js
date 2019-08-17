@@ -1,5 +1,5 @@
 
-  const {EXRLoader, EquirectangularToCubeGenerator, OrbitControls, PMREMGenerator, PMREMCubeUVPacker} = THREE;
+  const {EXRLoader, EquirectangularToCubeGenerator, PMREMGenerator, PMREMCubeUVPacker} = THREE;
   const container = document.getElementById("canvas");
   
   var renderer, scene, camera;
@@ -74,15 +74,15 @@
         pmremGenerator.dispose();
         pmremCubeUVPacker.dispose();
     } );
-    
+
 	  renderer.setPixelRatio( window.devicePixelRatio );
 	  renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
     renderer.gammaInput = false;
 	  renderer.gammaOutput = true;
-    controls = new OrbitControls( camera, renderer.domElement );
-    controls.minDistance = 50;
-    controls.maxDistance = 300;
+    // controls = new OrbitControls( camera, renderer.domElement );
+    // controls.minDistance = 50;
+    // controls.maxDistance = 300;
 
     window.addEventListener( 'resize', onWindowResize, false );
   }
