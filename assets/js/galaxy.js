@@ -1,12 +1,5 @@
 const {OrbitControls} = THREE;
 const container = document.getElementById("canvas");
-
-const params = {
-  envMap: 'PNG',
-  roughness: 0.0,
-  metalness: 1.0,
-  exposure: 1.0,
-};
   
 var controls, camera, scene, renderer;
 var cameraCube, sceneCube;
@@ -14,15 +7,6 @@ var textureEquirec;
 var cubeMesh, sphereMesh;
 var sphereMaterial;
 
-init();
-animate();
-
-import { OrbitControls } from './jsm/controls/OrbitControls.js';
-  var controls, camera, scene, renderer;
-  var cameraCube, sceneCube;
-  var textureEquirec, textureCube, textureSphere;
-  var cubeMesh, sphereMesh;
-  var sphereMaterial;
 
   init();
   animate();
