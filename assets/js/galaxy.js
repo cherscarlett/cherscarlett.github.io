@@ -80,10 +80,10 @@ var water, light;
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
     sceneCube.add( cubeMesh );
     //
-    var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
-    sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureEquirec } );
-    sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
-    scene.add( sphereMesh );
+    // var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
+    // sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureEquirec } );
+    // sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
+    // scene.add( sphereMesh );
     //
     renderer = new THREE.WebGLRenderer();
     renderer.autoClear = false;
