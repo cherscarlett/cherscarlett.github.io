@@ -64,7 +64,7 @@ var sphereMaterial;
       depthWrite: false,
       side: THREE.BackSide
     } );
-    cubeMaterial.uniforms[ "tCube" ].value = textureEquirec;
+    cubeMaterial.uniforms[ "tCube" ].value = textureCube;
     Object.defineProperty( cubeMaterial, 'map', {
       get: function () {
         return this.uniforms.tCube.value;
@@ -75,7 +75,7 @@ var sphereMaterial;
     sceneCube.add( cubeMesh );
     //
     var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
-    sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
+    sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureEquirec } );
     sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
     scene.add( sphereMesh );
     //
