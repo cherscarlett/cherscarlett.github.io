@@ -1,6 +1,14 @@
 
   const {EXRLoader, EquirectangularToCubeGenerator, PMREMGenerator, PMREMCubeUVPacker} = THREE;
   const container = document.getElementById("canvas");
+
+  const params = {
+    envMap: 'EXR',
+    roughness: 0.0,
+    metalness: 0.0,
+    exposure: 1.0,
+    debug: false,
+  };
   
   var renderer, scene, camera;
   var torusMesh, planeMesh;
@@ -9,12 +17,6 @@
   
   init();
   animate();
-
-  var params = {
-    envMap: 'EXR',
-    exposure: 1.0,
-    debug: false,
-  };
   
   function init() {
 	var pngCubeRenderTarget, exrCubeRenderTarget;
@@ -28,8 +30,8 @@
     
     var geometry = new THREE.TorusKnotBufferGeometry( 18, 8, 150, 20 );
     var material = new THREE.MeshStandardMaterial( {
-      metalness: 0.0,
-      roughness: 0.0,
+      metalness: params.roughness,
+      roughness: params.metalness,
       envMapIntensity: 1.0
     } );
     torusMesh = new THREE.Mesh( geometry, material );
@@ -100,8 +102,8 @@
 			}
   
   function render() {
-				torusMesh.material.roughness = 0.0;
-				torusMesh.material.metalness = 0.0;
+				torusMesh.material.roughness = params.roughness;
+				torusMesh.material.metalness = params.metalness;
 				var newEnvMap = torusMesh.material.envMap;
 				var background = scene.background;
 				switch ( params.envMap ) {
