@@ -79,7 +79,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
 
 	// Touch fingers
-	this.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+	THREE.TOUCH ? this.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN } : this.touches = { };
 
 	// for reset
 	this.target0 = this.target.clone();
