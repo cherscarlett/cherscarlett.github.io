@@ -3,7 +3,7 @@
   const container = document.getElementById("canvas");
 
   const params = {
-    envMap: 'EXR',
+    envMap: 'PNG',
     roughness: 0.0,
     metalness: 0.0,
     exposure: 1.0,
@@ -86,6 +86,14 @@
     // controls.maxDistance = 300;
 
     window.addEventListener( 'resize', onWindowResize, false );
+
+    var gui = new dat.GUI();
+    gui.add( params, 'envMap', [ 'EXR', 'PNG' ] );
+    gui.add( params, 'roughness', 0, 1, 0.01 );
+    gui.add( params, 'metalness', 0, 1, 0.01 );
+    gui.add( params, 'exposure', 0, 2, 0.01 );
+    gui.add( params, 'debug', false );
+    gui.open();
   }
   
   function onWindowResize() {
