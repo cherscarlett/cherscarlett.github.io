@@ -70,11 +70,12 @@ var water, light;
 						sunDirection: light.position.clone().normalize(),
 						sunColor: 0xffffff,
 						waterColor: 0x001e0f,
-						distortionScale: 3.7,
+						distortionScale: 100.7,
 						fog: scene.fog !== undefined
 					}
 				);
-				water.rotation.x = - Math.PI / 2;
+				water.rotation.x = - Math.PI / 4;
+				water.material.uniforms['size'] = .1;
 				scene.add( water );
     // Skybox
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
