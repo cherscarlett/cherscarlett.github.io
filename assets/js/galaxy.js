@@ -71,7 +71,7 @@ var sphereMaterial;
       }
     } );
     // Skybox
-    cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), cubeMaterial );
+    cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
     sceneCube.add( cubeMesh );
     //
     var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
