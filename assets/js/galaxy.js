@@ -3,12 +3,18 @@
   const container = document.getElementById("canvas");
   
   var renderer, scene, camera;
+  var torusMesh, planeMesh;
+  var pngCubeRenderTarget, exrCubeRenderTarget;
+  var pngBackground, exrBackground;
   
   init();
+  animate();
   
   function init() {
     var params = {
         envMap: 'EXR',
+				roughness: 0.0,
+				metalness: 0.0,
         exposure: 1.0,
         debug: false,
     };
@@ -21,7 +27,20 @@
     renderer = new THREE.WebGLRenderer();
     renderer.toneMapping = THREE.LinearToneMapping;
     
-    
+    var geometry = new THREE.TorusKnotBufferGeometry( 18, 8, 150, 20 );
+    var material = new THREE.MeshStandardMaterial( {
+      metalness: params.roughness,
+      roughness: params.metalness,
+      envMapIntensity: 1.0
+    } );
+    torusMesh = new THREE.Mesh( geometry, material );
+    scene.add( torusMesh );
+    var geometry = new THREE.PlaneBufferGeometry( 200, 200 );
+    var material = new THREE.MeshBasicMaterial();
+    planeMesh =  new THREE.Mesh( geometry, material );
+    planeMesh.position.y = - 50;
+    planeMesh.rotation.x = - Math.PI * 0.5;
+    scene.add( planeMesh );
     
     new EXRLoader()
       .setDataType( THREE.FloatType )
@@ -55,11 +74,16 @@
         pmremGenerator.dispose();
         pmremCubeUVPacker.dispose();
     } );
-	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( window.innerWidth, window.innerHeight );
+    
+	  renderer.setPixelRatio( window.devicePixelRatio );
+	  renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
     renderer.gammaInput = false;
-	renderer.gammaOutput = true;
+	  renderer.gammaOutput = true;
+    controls = new OrbitControls( camera, renderer.domElement );
+    controls.minDistance = 50;
+    controls.maxDistance = 300;
+
     window.addEventListener( 'resize', onWindowResize, false );
   }
   
@@ -70,6 +94,13 @@
       camera.updateProjectionMatrix();
       renderer.setSize( width, height );
   }
+
+  function animate() {
+				requestAnimationFrame( animate );
+				stats.begin();
+				render();
+				stats.end();
+			}
   
   function render() {
 				torusMesh.material.roughness = params.roughness;
