@@ -73,9 +73,9 @@ function init() {
   container.appendChild( renderer.domElement );
   renderer.gammaInput = false;
   renderer.gammaOutput = true;
-  // controls = new OrbitControls( camera, renderer.domElement );
-  // controls.minDistance = 50;
-  // controls.maxDistance = 300;
+  controls = new OrbitControls( camera, renderer.domElement );
+  controls.minDistance = 50;
+  controls.maxDistance = 300;
 
   window.addEventListener( 'resize', onWindowResize, false );
 }
