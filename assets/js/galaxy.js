@@ -1,4 +1,4 @@
-const {EXRLoader, EquirectangularToCubeGenerator, PMREMGenerator, PMREMCubeUVPacker} = THREE;
+const {OrbitControls, EXRLoader, EquirectangularToCubeGenerator, PMREMGenerator, PMREMCubeUVPacker} = THREE;
 const container = document.getElementById("canvas");
 
 const params = {
