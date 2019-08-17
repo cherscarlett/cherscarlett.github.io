@@ -16,7 +16,6 @@
 const {
 	BackSide,
 	CubeUVReflectionMapping,
-	LinearFilter,
 	LinearToneMapping,
 	Mesh,
 	NoBlending,
@@ -31,7 +30,7 @@ const {
 	WebGLRenderTarget
 } = THREE;
 
-var PMREMCubeUVPacker = ( function () {
+THREE.PMREMCubeUVPacker = ( function () {
 
 	var camera = new OrthographicCamera();
 	var scene = new Scene();

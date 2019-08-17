@@ -28,7 +28,7 @@ const {
 	sRGBEncoding
 } = THREE;
 
-var PMREMGenerator = ( function () {
+THREE.PMREMGenerator = ( function () {
 
 	var shader = getShader();
 	var camera = new OrthographicCamera( - 1, 1, 1, - 1, 0.0, 1000 );
