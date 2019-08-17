@@ -1,10 +1,4 @@
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.min.js"></script>
-<script type="text/javascript" src="https://threejs.org/examples/js/loaders/EXRLoader.js"></script>
-<script type="text/javascript" src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
-<script type="text/javascript" src="https://threejs.org/examples/js/loaders/EquirectangularToCubeGenerator.js"></script>
-<script type="text/javascript" src="https://cherscarlett.github.io/assets/libs/pmrem/PMREMGenerator.js"></script>
-<script type="text/javascript" src="https://cherscarlett.github.io/assets/libs/pmrem/PMREMCubeUVPacker.js"></script>
-<script type="text/javascript">
+
   const {EXRLoader, EquirectangularToCubeGenerator, OrbitControls, PMREMGenerator, PMREMCubeUVPacker} = THREE;
   const container = document.getElementById("canvas");
   
@@ -78,20 +72,29 @@
   }
   
   function render() {
-      var background = scene.background;
-      switch ( params.envMap ) {
-          case 'EXR':
-              background = exrBackground;
-              break;
-          case 'PNG':
-              background = pngBackground;
-              break;
-      }
-      scene.background = background;
-      renderer.toneMappingExposure = params.exposure;
-      renderer.render( scene, camera );
-  }
-
-  
-  
-</script>
+				torusMesh.material.roughness = params.roughness;
+				torusMesh.material.metalness = params.metalness;
+				var newEnvMap = torusMesh.material.envMap;
+				var background = scene.background;
+				switch ( params.envMap ) {
+					case 'EXR':
+						newEnvMap = exrCubeRenderTarget ? exrCubeRenderTarget.texture : null;
+						background = exrBackground;
+						break;
+					case 'PNG':
+						newEnvMap = pngCubeRenderTarget ? pngCubeRenderTarget.texture : null;
+						background = pngBackground;
+						break;
+				}
+				if ( newEnvMap !== torusMesh.material.envMap ) {
+					torusMesh.material.envMap = newEnvMap;
+					torusMesh.material.needsUpdate = true;
+					planeMesh.material.map = newEnvMap;
+					planeMesh.material.needsUpdate = true;
+				}
+				torusMesh.rotation.y += 0.005;
+				planeMesh.visible = params.debug;
+				scene.background = background;
+				renderer.toneMappingExposure = params.exposure;
+				renderer.render( scene, camera );
+			}
