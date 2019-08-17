@@ -11,11 +11,11 @@
   animate();
 
   var params = {
-      envMap: 'EXR',
-      roughness: 0.0,
-      metalness: 0.0,
-      exposure: 1.0,
-      debug: false,
+    envMap: 'EXR',
+    roughness: 0.0,
+    metalness: 0.0,
+    exposure: 1.0,
+    debug: false,
   };
   
   function init() {
