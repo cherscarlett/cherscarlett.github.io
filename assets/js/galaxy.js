@@ -12,8 +12,6 @@
 
   var params = {
     envMap: 'EXR',
-    roughness: 0.0,
-    metalness: 0.0,
     exposure: 1.0,
     debug: false,
   };
@@ -30,8 +28,8 @@
     
     var geometry = new THREE.TorusKnotBufferGeometry( 18, 8, 150, 20 );
     var material = new THREE.MeshStandardMaterial( {
-      metalness: params.roughness,
-      roughness: params.metalness,
+      metalness: 0.0,
+      roughness: 0.0,
       envMapIntensity: 1.0
     } );
     torusMesh = new THREE.Mesh( geometry, material );
@@ -102,8 +100,8 @@
 			}
   
   function render() {
-				torusMesh.material.roughness = params.roughness;
-				torusMesh.material.metalness = params.metalness;
+				torusMesh.material.roughness = 0.0;
+				torusMesh.material.metalness = 0.0;
 				var newEnvMap = torusMesh.material.envMap;
 				var background = scene.background;
 				switch ( params.envMap ) {
