@@ -16,7 +16,6 @@
 const {
 	BackSide,
 	CubeUVReflectionMapping,
-	NoBlending,
 	OrthographicCamera,
 	PlaneBufferGeometry,
 	RGBEEncoding,
