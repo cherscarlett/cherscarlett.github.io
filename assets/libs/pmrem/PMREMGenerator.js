@@ -306,5 +306,3 @@ var PMREMGenerator = ( function () {
 	return PMREMGenerator;
 
 } )();
-
-export { PMREMGenerator };

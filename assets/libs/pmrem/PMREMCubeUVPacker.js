@@ -249,5 +249,3 @@ var PMREMCubeUVPacker = ( function () {
 	return PMREMCubeUVPacker;
 
 } )();
-
-export { PMREMCubeUVPacker };
