@@ -11,7 +11,7 @@
  *	by this class.
  */
 
-import {
+const {
 	DoubleSide,
 	GammaEncoding,
 	LinearEncoding,
@@ -26,7 +26,7 @@ import {
 	ShaderMaterial,
 	WebGLRenderTargetCube,
 	sRGBEncoding
-} from "../../../build/three.module.js";
+} = THREE;
 
 var PMREMGenerator = ( function () {
 

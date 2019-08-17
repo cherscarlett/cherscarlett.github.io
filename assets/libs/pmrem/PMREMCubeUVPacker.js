@@ -13,7 +13,7 @@
  * The arrangement of the faces is fixed, as assuming this arrangement, the sampling function has been written.
  */
 
-import {
+const {
 	BackSide,
 	CubeUVReflectionMapping,
 	LinearFilter,
@@ -29,7 +29,7 @@ import {
 	Vector2,
 	Vector3,
 	WebGLRenderTarget
-} from "../../../build/three.module.js";
+} = THREE;
 
 var PMREMCubeUVPacker = ( function () {
 
