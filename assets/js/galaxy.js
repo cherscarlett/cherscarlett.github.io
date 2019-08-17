@@ -9,7 +9,7 @@ const params = {
 };
   
 var renderer, scene, camera;
-var torusMesh, planeMesh;
+var torusMesh;
 var pngCubeRenderTarget, exrCubeRenderTarget;
 var pngBackground, exrBackground;
 
@@ -34,10 +34,6 @@ function init() {
   scene.add( torusMesh );
   var geometry = new THREE.PlaneBufferGeometry( 200, 200 );
   var material = new THREE.MeshBasicMaterial();
-  planeMesh =  new THREE.Mesh( geometry, material );
-  planeMesh.position.y = - 50;
-  planeMesh.rotation.x = - Math.PI * 0.5;
-  scene.add( planeMesh );
   
   new EXRLoader()
     .setDataType( THREE.FloatType )
@@ -59,7 +55,7 @@ function init() {
   
   new THREE.TextureLoader().load( 'https://cherscarlett.github.io/assets/env/galaxy.png', function ( texture ) {
       texture.encoding = THREE.sRGBEncoding;
-      var cubemapGenerator = new EquirectangularToCubeGenerator( texture, { resolution: 1024 } );
+      var cubemapGenerator = new EquirectangularToCubeGenerator( texture, { resolution: 2048 } );
       pngBackground = cubemapGenerator.renderTarget;
       var cubeMapTexture = cubemapGenerator.update( renderer );
       var pmremGenerator = new PMREMGenerator( cubeMapTexture );
@@ -115,11 +111,8 @@ function render() {
   if ( newEnvMap !== torusMesh.material.envMap ) {
     torusMesh.material.envMap = newEnvMap;
     torusMesh.material.needsUpdate = true;
-    planeMesh.material.map = newEnvMap;
-    planeMesh.material.needsUpdate = true;
   }
   torusMesh.rotation.y += 0.005;
-  planeMesh.visible = false;
   scene.background = background;
   renderer.toneMappingExposure = params.exposure;
   renderer.render( scene, camera );
