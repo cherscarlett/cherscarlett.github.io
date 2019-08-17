@@ -19,8 +19,6 @@
   animate();
   
   function init() {
-	var pngCubeRenderTarget, exrCubeRenderTarget;
-	var pngBackground, exrBackground;
     
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.set( 0, 0, 120 );
