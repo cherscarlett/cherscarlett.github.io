@@ -64,7 +64,7 @@ var sphereMaterial;
       depthWrite: false,
       side: THREE.BackSide
     } );
-    cubeMaterial.uniforms[ "tCube" ].value = textureCube;
+    cubeMaterial.uniforms[ "tCube" ].value = textureEquirec;
     Object.defineProperty( cubeMaterial, 'map', {
       get: function () {
         return this.uniforms.tCube.value;
@@ -124,7 +124,6 @@ var sphereMaterial;
       }
       sphereMaterial.needsUpdate = true;
     } );
-    gui.open();
     window.addEventListener( 'resize', onWindowResize, false );
   }
   function onWindowResize() {
