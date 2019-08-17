@@ -6,6 +6,7 @@ var cameraCube, sceneCube;
 var textureEquirec;
 var cubeMesh, sphereMesh;
 var sphereMaterial;
+var water, light;
 
 
   init();
