@@ -111,8 +111,10 @@ var water, light;
     render();
   }
   function render() {
+		var time = performance.now() * 0.001;
     camera.lookAt( scene.position );
     cameraCube.rotation.copy( camera.rotation );
+		water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
     renderer.render( sceneCube, cameraCube );
     renderer.render( scene, camera );
   }
