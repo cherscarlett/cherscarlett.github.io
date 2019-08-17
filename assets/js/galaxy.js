@@ -119,7 +119,7 @@ function render() {
     planeMesh.material.needsUpdate = true;
   }
   torusMesh.rotation.y += 0.005;
-  planeMesh.visible = params.debug;
+  planeMesh.visible = false;
   scene.background = background;
   renderer.toneMappingExposure = params.exposure;
   renderer.render( scene, camera );
