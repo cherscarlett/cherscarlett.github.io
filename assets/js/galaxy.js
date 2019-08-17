@@ -74,8 +74,8 @@ var water, light;
 						fog: scene.fog !== undefined
 					}
 				);
-				water.rotation.x = - Math.PI / 4;
-				water.material.uniforms['size'] = .5;
+				water.rotation.x = - Math.PI / 2;
+				var uniforms = water.material.uniforms;
 				scene.add( water );
     // Skybox
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
