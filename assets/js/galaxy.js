@@ -97,9 +97,7 @@
 
   function animate() {
 				requestAnimationFrame( animate );
-				stats.begin();
 				render();
-				stats.end();
 			}
   
   function render() {
