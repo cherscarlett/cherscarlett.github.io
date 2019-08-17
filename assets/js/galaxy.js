@@ -13,11 +13,11 @@ var water, light;
   animate();
 
   function init() {
-    // CAMERAS
-    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-    camera.position.set( 0, 0, 1000 );
+    // Cameras
+    camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 20000 );
+    camera.position.set( 30, 30, 100 );
     cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-    // SCENE
+    // Scene
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
     // Lights
