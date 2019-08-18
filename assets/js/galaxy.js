@@ -4,8 +4,7 @@ const container = document.getElementById("canvas");
 var controls, camera, scene, renderer;
 var cameraCube, sceneCube;
 var textureEquirec;
-var cubeMesh, sphereMesh;
-var sphereMaterial;
+var cubeMesh;
 var water, light;
 
 
@@ -23,15 +22,10 @@ var water, light;
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
-    light = new THREE.DirectionalLight( 0xffffff, 0.8 );
+    var sphere = new THREE.SphereBufferGeometry( 0.5, 16, 8 );
+    light = new THREE.PointLight( 0xff0040, 2, 50 );
+    light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
     scene.add( light );
-    sunSphere = new THREE.Mesh(
-      new THREE.SphereBufferGeometry( 20000, 16, 8 ),
-      new THREE.MeshBasicMaterial( { color: 0xffffff } )
-    );
-    sunSphere.position.y = -700000;
-    sunSphere.visible = false ;
-    scene.add( sunSphere );
     // Textures
     var textureLoader = new THREE.TextureLoader();
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
@@ -85,7 +79,7 @@ var water, light;
     // sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
     // scene.add( sphereMesh );
     //
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.autoClear = false;
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -115,6 +109,9 @@ var water, light;
     camera.lookAt( scene.position );
     cameraCube.rotation.copy( camera.rotation );
 		water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+    light.position.x = Math.sin( time * 0.7 ) * 30;
+    light.position.y = Math.cos( time * 0.5 ) * 40;
+    light.position.z = Math.cos( time * 0.3 ) * 30;
     renderer.render( sceneCube, cameraCube );
     renderer.render( scene, camera );
   }
