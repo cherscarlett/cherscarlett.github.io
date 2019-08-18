@@ -15,7 +15,7 @@ var water, light;
   function init() {
     // Cameras
     camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 20000 );
-    camera.position.set( 30, 30, 100 );
+    camera.position.set( -225, 4, -445 );
     cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
     // Scene
     scene = new THREE.Scene();
@@ -26,14 +26,6 @@ var water, light;
     light = new THREE.DirectionalLight( 0xffffff, 0.8 );
     scene.add( light );
     // Textures
-    var r = "https://cherscarlett.github.io/assets/env/";
-    var urls = [ r + "posx.jpg", r + "negx.jpg",
-            r + "posy.jpg", r + "negy.jpg",
-            r + "posz.jpg", r + "negz.jpg" ];
-    textureCube = new THREE.CubeTextureLoader().load( urls );
-    textureCube.format = THREE.RGBFormat;
-    textureCube.mapping = THREE.CubeReflectionMapping;
-    textureCube.encoding = THREE.sRGBEncoding;
     var textureLoader = new THREE.TextureLoader();
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
     textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
