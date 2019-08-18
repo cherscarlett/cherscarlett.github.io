@@ -25,7 +25,7 @@ var water, light;
     var sphere = new THREE.SphereBufferGeometry( 0.5, 16, 8 );
     light = new THREE.PointLight( 0xff0040, 2, 50 );
     light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
-    light.position = {x: 0, y, 1000, z: 0}
+    light.position = {x: 0, y: 1000, z: 0}
     scene.add( light );
     // Textures
     var textureLoader = new THREE.TextureLoader();
