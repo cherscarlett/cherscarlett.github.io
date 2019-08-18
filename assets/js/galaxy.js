@@ -24,7 +24,7 @@ var water, light;
     scene.add( ambient );
     var sphere = new THREE.SphereBufferGeometry( 0.5, 16, 8 );
     light = new THREE.PointLight( 0xff0040, 2, 50 );
-    light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
+    light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040, position: {x: 0, y, 1000, z: 0} } ) ) );
     scene.add( light );
     // Textures
     var textureLoader = new THREE.TextureLoader();
@@ -109,9 +109,6 @@ var water, light;
     camera.lookAt( scene.position );
     cameraCube.rotation.copy( camera.rotation );
 		water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
-    light.position.x = Math.sin( time * 0.7 ) * 30;
-    light.position.y = Math.cos( time * 0.5 ) * 40;
-    light.position.z = Math.cos( time * 0.3 ) * 30;
     renderer.render( sceneCube, cameraCube );
     renderer.render( scene, camera );
   }
