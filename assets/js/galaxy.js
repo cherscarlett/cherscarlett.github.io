@@ -22,11 +22,12 @@ var water, light;
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
-    var sphere = new THREE.SphereBufferGeometry( 100.5, 16, 8 );
+    var sphere = new THREE.SphereBufferGeometry( 300.5, 512, 512 );
     light = new THREE.PointLight( 0xff0040, 2, 50 );
     light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
-    light.position = {x: 0, y: 1000, z: 0}
     scene.add( light );
+    light.position.x = 4500;
+    light.position.z = 4500;
     // Textures
     var textureLoader = new THREE.TextureLoader();
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
