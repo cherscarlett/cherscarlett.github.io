@@ -22,7 +22,7 @@ var water, light;
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
-    var sphere = new THREE.SphereBufferGeometry( 0.5, 16, 8 );
+    var sphere = new THREE.SphereBufferGeometry( 100.5, 16, 8 );
     light = new THREE.PointLight( 0xff0040, 2, 50 );
     light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
     light.position = {x: 0, y: 1000, z: 0}
