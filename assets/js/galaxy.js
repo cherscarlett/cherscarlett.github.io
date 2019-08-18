@@ -25,6 +25,13 @@ var water, light;
     scene.add( ambient );
     light = new THREE.DirectionalLight( 0xffffff, 0.8 );
     scene.add( light );
+    sunSphere = new THREE.Mesh(
+      new THREE.SphereBufferGeometry( 20000, 16, 8 ),
+      new THREE.MeshBasicMaterial( { color: 0xffffff } )
+    );
+    sunSphere.position.y = -700000;
+    sunSphere.visible = false ;
+    scene.add( sunSphere );
     // Textures
     var textureLoader = new THREE.TextureLoader();
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
