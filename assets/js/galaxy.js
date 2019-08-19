@@ -1,7 +1,7 @@
 const {OrbitControls} = THREE;
 const container = document.getElementById("canvas");
   
-var controls, camera, scene, renderer;
+var controls, camera, scene, blurComposer, renderer;
 var cameraCube, sceneCube;
 var textureEquirec;
 var cubeMesh;
@@ -19,18 +19,21 @@ var water, light;
     // Scene
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
+    blurComposer = new THREE.EffectComposer(renderer);
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
     var sphere = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
     light = new THREE.PointLight( 0xff0040, 2, 50 );
     light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
+    light.position.set( 4500, 0, 4500 );
+    var blurLight = new THREE.PointLight( 0xff0040, 2, 50 );
+    blurLight.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
+    blurLight.position.set( 50, 50, 50 );
     scene.add( light );
-    light.position.x = 4500;
-    light.position.z = 4500;
     // Textures
     var textureLoader = new THREE.TextureLoader();
-    textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/galaxy.png" );
+    textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k.jpg" );
     textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
     textureEquirec.magFilter = THREE.LinearFilter;
     textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
@@ -81,8 +84,9 @@ var water, light;
     // sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
     // scene.add( sphereMesh );
     //
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer = new THREE.WebGLRenderer( { antialias: true, alpha:true, logarithmicDepthBuffer: true } );
     renderer.autoClear = false;
+    renderer.setClearColor(0x000000, 1.0);
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.getElementById('canvas').appendChild( renderer.domElement );
