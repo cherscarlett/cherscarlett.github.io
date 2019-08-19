@@ -19,7 +19,7 @@ var water, light;
     // Scene
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
-    blurComposer = new THREE.EffectComposer(renderer);
+    //blurComposer = new THREE.EffectComposer(renderer);
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
@@ -27,9 +27,9 @@ var water, light;
     light = new THREE.PointLight( 0xff0040, 2, 50 );
     light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
     light.position.set( 4500, 0, 4500 );
-    var blurLight = new THREE.PointLight( 0xff0040, 2, 50 );
-    blurLight.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
-    blurLight.position.set( 50, 50, 50 );
+    // var blurLight = new THREE.PointLight( 0xff0040, 2, 50 );
+    // blurLight.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
+    // blurLight.position.set( 50, 50, 50 );
     scene.add( light );
     // Textures
     var textureLoader = new THREE.TextureLoader();
