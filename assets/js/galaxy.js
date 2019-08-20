@@ -23,11 +23,16 @@ var water, light;
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
     var sphere = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
+    var sunGeometry = new THREE.SphereGeometry( 800, 2048, 2048 );
+    var sunMaterial = new THREE.MeshPhongMaterial({
+      color: 0xaaaaaa
+    });
+    var sun = new THREE.Mesh(sunGeometry, sunMaterial);
     light = new THREE.PointLight( 0xff0040, 2, 50 );
     light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
-    scene.add( light );
-    light.position.x = 4500;
-    light.position.z = 4500;
+    scene.add( sun );
+    sun.position.x = 4500;
+    sun.position.z = 4500;
     // Textures
     var textureLoader = new THREE.TextureLoader();
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k.jpg" );
