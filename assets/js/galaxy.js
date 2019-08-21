@@ -27,7 +27,7 @@ function init() {
     color: 0xff51A4,
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg"),
     bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
-    bumpScale:   0.5
+    bumpScale:   100
   });
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
   var sunHeatGeometry = new THREE.SphereBufferGeometry(810, 2058, 2058);
