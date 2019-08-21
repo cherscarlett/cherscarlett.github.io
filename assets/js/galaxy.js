@@ -27,24 +27,24 @@ function init() {
     color: 0xff51A4,
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg"),
     bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
-    bumpScale:   0.005
+    bumpScale:   0.5
   });
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
-  // var sunHeatGeometry = new THREE.SphereGeometry(810, 2058, 2058);
-  // var  sunHeatMaterial = new THREE.MeshPhongMaterial({
-  //   map: textureLoader.load("https://cherscarlett.github.io/assets/env/clouds.jpg"),
-  //   transparent: true,
-  //   opacity: 0.1
-  // });
-  // sunHeat = new THREE.Mesh(cloudGeometry, cloudMaterial);
+  var sunHeatGeometry = new THREE.SphereBufferGeometry(810, 2058, 2058);
+  var sunHeatMaterial = new THREE.MeshBasicMaterial({
+    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
+    transparent: true,
+    opacity: 0.1
+  });
+  sunHeat = new THREE.Mesh(sunHeatGeometry, sunHeatMaterial);
   scene.add(sunHeat);
   light = new THREE.PointLight( 0xfd9849, 2, 50 );
   light.add( sun );
   scene.add( light );
   light.position.x = 4500;
   light.position.z = 4500;
-  // sunHeat.position.x = 4500;
-  // sunHeat.position.z = 4500;
+  sunHeat.position.x = 4500;
+  sunHeat.position.z = 4500;
   // Textures
   textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k.jpg" );
   textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
@@ -122,6 +122,9 @@ function render() {
   cameraCube.rotation.copy( camera.rotation );
   water.material.uniforms[ "time" ].value += 1.0 / 60.0;
   sun.rotation.y -= .00025;
+  sun.rotation.x -= .00015;
+  sunHeat.rotation.y += .00045;
+  sunHeat.rotation.x += .00035;
   renderer.render( sceneCube, cameraCube );
   renderer.render( scene, camera );
 }
