@@ -25,7 +25,9 @@ function init() {
   var sunGeometry = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
   var sunMaterial = new THREE.MeshBasicMaterial({
     color: 0xff51A4,
-    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg")
+    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg"),
+    bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
+    bumpScale:   0.005
   });
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
   // var sunHeatGeometry = new THREE.SphereGeometry(810, 2058, 2058);
@@ -119,6 +121,7 @@ function render() {
   camera.lookAt( scene.position );
   cameraCube.rotation.copy( camera.rotation );
   water.material.uniforms[ "time" ].value += 1.0 / 60.0;
+  sun.rotation.y -= .00025;
   renderer.render( sceneCube, cameraCube );
   renderer.render( scene, camera );
 }
