@@ -32,7 +32,7 @@ function init() {
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
   var sunHeatGeometry = new THREE.SphereBufferGeometry(810, 2058, 2058);
   var sunHeatMaterial = new THREE.MeshBasicMaterial({
-    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
+    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_pink_clouds.jpg"),
     transparent: true,
     opacity: 0.1
   });
