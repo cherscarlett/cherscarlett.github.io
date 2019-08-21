@@ -23,7 +23,7 @@ function init() {
   var ambient = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient );
   var sunGeometry = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
-  var sunMaterial = new THREE.MeshBasicMaterial({
+  var sunMaterial = new THREE.MeshPhongMaterial({
     color: 0xff51A4,
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg"),
     bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
