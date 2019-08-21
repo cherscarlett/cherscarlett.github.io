@@ -17,11 +17,9 @@ var water, light, sun;
     camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 20000 );
     camera.position.set( -225, 4, -445 );
     cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
-
     // Scene
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
-
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
@@ -32,18 +30,16 @@ var water, light, sun;
     });
     sun = new THREE.Mesh(sunGeometry, sunMaterial);
     light = new THREE.PointLight( 0xfd9849, 2, 50 );
-    light.add( sun ) );
+    light.add( sun );
     scene.add( light );
     light.position.x = 4500;
     light.position.z = 4500;
-
     // Textures
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k.jpg" );
     textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
     textureEquirec.magFilter = THREE.LinearFilter;
     textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
     textureEquirec.encoding = THREE.sRGBEncoding;
-
     // Materials
     var equirectShader = THREE.ShaderLib[ "equirect" ];
     var equirectMaterial = new THREE.ShaderMaterial( {
@@ -60,7 +56,6 @@ var water, light, sun;
         return this.uniforms.tEquirect.value;
       }
     } );
-
     // Water
 				var waterGeometry = new THREE.PlaneBufferGeometry( 10000, 10000 );
 				water = new THREE.Water(
@@ -82,7 +77,6 @@ var water, light, sun;
 				water.rotation.x = - Math.PI / 2;
 				var uniforms = water.material.uniforms;
 				scene.add( water );
-
     // Skybox
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
     sceneCube.add( cubeMesh );
@@ -92,8 +86,7 @@ var water, light, sun;
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.getElementById('canvas').appendChild( renderer.domElement );
     renderer.gammaOutput = true;
-    
-    // Camera Controls
+    //
     controls = new OrbitControls( camera, renderer.domElement );
     controls.minDistance = 500;
     controls.maxDistance = 2500;
