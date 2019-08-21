@@ -1,11 +1,12 @@
 const {OrbitControls} = THREE;
 const container = document.getElementById("canvas");
+var textureLoader = new THREE.TextureLoader();
   
 var controls, camera, scene, renderer;
 var cameraCube, sceneCube;
 var textureEquirec;
 var cubeMesh;
-var water, light;
+var water, light, sun;
 
 
   init();
@@ -16,30 +17,33 @@ var water, light;
     camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 20000 );
     camera.position.set( -225, 4, -445 );
     cameraCube = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100000 );
+
     // Scene
     scene = new THREE.Scene();
     sceneCube = new THREE.Scene();
+
     // Lights
     var ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
-    var sphere = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
-    // var sunGeometry = new THREE.SphereGeometry( 800, 2048, 2048 );
-    // var sunMaterial = new THREE.MeshPhongMaterial({
-    //   color: 0xaaaaaa
-    // });
-    // var sun = new THREE.Mesh(sunGeometry, sunMaterial);
-    light = new THREE.PointLight( 0xff0040, 2, 50 );
-    light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
+    var sunGeometry = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
+    var sunMaterial = new THREE.MeshBasicMaterial({
+      color: 0xff51A4,
+      map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg")
+    });
+    sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    light = new THREE.PointLight( 0xfd9849, 2, 50 );
+    light.add( sun ) );
     scene.add( light );
-    sun.position.x = 4500;
-    sun.position.z = 4500;
+    light.position.x = 4500;
+    light.position.z = 4500;
+
     // Textures
-    var textureLoader = new THREE.TextureLoader();
     textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k.jpg" );
     textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
     textureEquirec.magFilter = THREE.LinearFilter;
     textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
     textureEquirec.encoding = THREE.sRGBEncoding;
+
     // Materials
     var equirectShader = THREE.ShaderLib[ "equirect" ];
     var equirectMaterial = new THREE.ShaderMaterial( {
@@ -56,6 +60,7 @@ var water, light;
         return this.uniforms.tEquirect.value;
       }
     } );
+
     // Water
 				var waterGeometry = new THREE.PlaneBufferGeometry( 10000, 10000 );
 				water = new THREE.Water(
@@ -77,22 +82,18 @@ var water, light;
 				water.rotation.x = - Math.PI / 2;
 				var uniforms = water.material.uniforms;
 				scene.add( water );
+
     // Skybox
     cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
     sceneCube.add( cubeMesh );
-    //
-    // var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
-    // sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureEquirec } );
-    // sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
-    // scene.add( sphereMesh );
-    //
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.autoClear = false;
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.getElementById('canvas').appendChild( renderer.domElement );
     renderer.gammaOutput = true;
-    //
+    
+    // Camera Controls
     controls = new OrbitControls( camera, renderer.domElement );
     controls.minDistance = 500;
     controls.maxDistance = 2500;
