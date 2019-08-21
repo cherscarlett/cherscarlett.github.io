@@ -98,9 +98,9 @@ function init() {
   document.getElementById("canvas").appendChild( renderer.domElement );
   renderer.gammaOutput = true;
   //
-  controls = new OrbitControls( camera, renderer.domElement );
-  controls.minDistance = 500;
-  controls.maxDistance = 2500;
+  // controls = new OrbitControls( camera, renderer.domElement );
+  // controls.minDistance = 500;
+  // controls.maxDistance = 2500;
   //
   window.addEventListener( "resize", onWindowResize, false );
 }
