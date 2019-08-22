@@ -1,4 +1,8 @@
-const {OrbitControls} = THREE;
+/**
+ * @author Cher / https://cher.dev
+ */
+
+// const {OrbitControls} = THREE;
 const container = document.getElementById("canvas");
 var textureLoader = new THREE.TextureLoader();
   

@@ -5,6 +5,7 @@
  * @author WestLangley / http://github.com/WestLangley
  * @author erich666 / http://erichaines.com
  * @author ScieCode / http://github.com/sciecode
+ * @author Cher / https://cher.dev
  */
 
 // This set of controls performs orbiting, dollying (zooming), and panning.
