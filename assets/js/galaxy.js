@@ -29,14 +29,14 @@ function init() {
   var sunGeometry = new THREE.SphereBufferGeometry( 800, 2048, 2048 );
   var sunMaterial = new THREE.MeshPhongMaterial({
     color: 0xff51A4,
-    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun.jpg"),
-    bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds.jpg"),
+    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun-min.jpg"),
+    bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds-min.jpg"),
     bumpScale:   100
   });
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
   var sunHeatGeometry = new THREE.SphereBufferGeometry(810, 2058, 2058);
   var sunHeatMaterial = new THREE.MeshBasicMaterial({
-    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_pink_clouds.jpg"),
+    map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_pink_clouds-min.jpg"),
     transparent: true,
     opacity: 0.1
   });
@@ -50,7 +50,7 @@ function init() {
   sunHeat.position.x = 4500;
   sunHeat.position.z = 4500;
   // Textures
-  textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k.jpg" );
+  textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k-min.jpg" );
   textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
   textureEquirec.magFilter = THREE.LinearFilter;
   textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
