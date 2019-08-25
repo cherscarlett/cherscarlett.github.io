@@ -26,7 +26,7 @@ function init() {
   // Lights
   var ambient = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient );
-  var sunGeometry = new THREE.SphereBufferGeometry( 800, 100, 100 );
+  var sunGeometry = new THREE.SphereBufferGeometry( 800, 80, 80 );
   var sunMaterial = new THREE.MeshPhongMaterial({
     color: 0xff51A4,
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun-min.jpg"),
@@ -34,7 +34,7 @@ function init() {
     bumpScale:   100
   });
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
-  var sunHeatGeometry = new THREE.SphereBufferGeometry(800, 100, 100);
+  var sunHeatGeometry = new THREE.SphereBufferGeometry(810, 80, 80);
   var sunHeatMaterial = new THREE.MeshBasicMaterial({
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_pink_clouds-min.jpg"),
     transparent: true,
