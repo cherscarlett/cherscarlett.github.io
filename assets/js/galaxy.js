@@ -50,7 +50,7 @@ function init() {
   sunHeat.position.x = 4500;
   sunHeat.position.z = 4500;
   // Textures
-  textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_16k-min.jpg" );
+  textureEquirec = textureLoader.load( "https://cherscarlett.github.io/assets/env/starmap_4k-min.jpg" );
   textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
   textureEquirec.magFilter = THREE.LinearFilter;
   textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
