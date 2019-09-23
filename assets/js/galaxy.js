@@ -23,6 +23,7 @@ function init() {
   // Scene
   scene = new THREE.Scene();
   sceneCube = new THREE.Scene();
+  //scene.fog = new THREE.FogExp2(0x11111f, 0.002);
   // Lights
   var ambient = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient );
@@ -64,7 +65,7 @@ function init() {
     var cloud = new THREE.Sprite( new THREE.SpriteMaterial( { map: cloudTexture, transparent: true, rotation: Math.random() * 360 } ) );
     cloud.position.set( - Math.random() * 5000 + 3000,- Math.random() * 1000, - Math.random() * 1000 );
     cloud.scale.set( 500, 500, 1 );
-    cloud.material.opacity = 0.6;
+    cloud.material.opacity = 0;
     clouds.add(cloud);
   }
   clouds.rotation.x = Math.PI/2;
@@ -117,8 +118,8 @@ function init() {
   renderer.gammaOutput = true;
   
   controls = new OrbitControls( camera, renderer.domElement );
-  controls.minDistance = 500;
-  controls.maxDistance = 500;
+  controls.enableZoom = false;
+  controls.enablePan = false;
   controls.maxAzimuthAngle = -2.674;
   controls.minAzimuthAngle = -2.674;
   controls.maxPolarAngle = 5;
@@ -143,13 +144,19 @@ function render() {
   camera.lookAt( scene.position );
   cameraCube.rotation.copy( camera.rotation );
   water.material.uniforms[ "time" ].value += 1.0 / 60.0;
-  clouds.children.forEach(c => {
-    c.material.rotation -=0.0002;
-  });
   sun.rotation.y -= .00025;
   sun.rotation.x -= .00015;
   sunHeat.rotation.y += .00045;
   sunHeat.rotation.x += .00035;
   renderer.render( sceneCube, cameraCube );
   renderer.render( scene, camera );
+  clouds.children.forEach(c => {
+      if (camera.position.y < 0 && c.material.opacity < 0.6){
+        c.material.rotation -=0.0002;
+        c.material.opacity +=0.05;
+      }
+      else if (camera.position.y > 0) {
+        c.material.opacity -=0.05;
+      }
+    });
 }
