@@ -2,7 +2,7 @@
  * @author Cher / https://cher.dev
  */
 
-// const {OrbitControls} = THREE;
+const {OrbitControls} = THREE;
 const container = document.getElementById("canvas");
 var textureLoader = new THREE.TextureLoader();
   
@@ -10,7 +10,7 @@ var controls, camera, scene, renderer;
 var cameraCube, sceneCube;
 var textureEquirec;
 var cubeMesh;
-var water, light, sun, sunHeat;
+var water, light, sun, sunHeat, clouds;
 
 init();
 animate();
@@ -26,6 +26,7 @@ function init() {
   // Lights
   var ambient = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient );
+  // Sun
   var sunGeometry = new THREE.SphereBufferGeometry( 800, 80, 80 );
   var sunMaterial = new THREE.MeshPhongMaterial({
     color: 0xff51A4,
@@ -55,6 +56,19 @@ function init() {
   textureEquirec.magFilter = THREE.LinearFilter;
   textureEquirec.minFilter = THREE.LinearMipmapLinearFilter;
   textureEquirec.encoding = THREE.sRGBEncoding;
+  // Clouds
+  clouds = new THREE.Group();
+	scene.add( clouds );
+  var cloudTexture = textureLoader.load("https://cherscarlett.github.io/assets/env/smoke.png");
+  for(let i = 0; i < 250; i++) {
+    var cloud = new THREE.Sprite( new THREE.SpriteMaterial( { map: cloudTexture, transparent: true, rotation: Math.random() * 360 } ) );
+    cloud.position.set( - Math.random() * 5000 + 3000,- Math.random() * 1000, - Math.random() * 1000 );
+    cloud.scale.set( 500, 500, 1 );
+    cloud.material.opacity = 0.6;
+    clouds.add(cloud);
+  }
+  clouds.rotation.x = Math.PI/2;
+  clouds.rotation.z = - Math.PI * 0.1;
   // Materials
   var equirectShader = THREE.ShaderLib[ "equirect" ];
   var equirectMaterial = new THREE.ShaderMaterial( {
@@ -95,17 +109,21 @@ function init() {
   // Skybox
   cubeMesh = new THREE.Mesh( new THREE.BoxBufferGeometry( 100, 100, 100 ), equirectMaterial );
   sceneCube.add( cubeMesh );
-  renderer = new THREE.WebGLRenderer( { antialias: true } );
+  renderer = new THREE.WebGLRenderer( { antialias: false } );
   renderer.autoClear = false;
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.getElementById("canvas").appendChild( renderer.domElement );
   renderer.gammaOutput = true;
-  //
-  // controls = new OrbitControls( camera, renderer.domElement );
-  // controls.minDistance = 500;
-  // controls.maxDistance = 2500;
-  //
+  
+  controls = new OrbitControls( camera, renderer.domElement );
+  controls.minDistance = 500;
+  controls.maxDistance = 500;
+  controls.maxAzimuthAngle = -2.674;
+  controls.minAzimuthAngle = -2.674;
+  controls.maxPolarAngle = 5;
+  controls.minPolarAngle = 1.56;
+  
   window.addEventListener( "resize", onWindowResize, false );
 }
 function onWindowResize() {
@@ -125,6 +143,9 @@ function render() {
   camera.lookAt( scene.position );
   cameraCube.rotation.copy( camera.rotation );
   water.material.uniforms[ "time" ].value += 1.0 / 60.0;
+  clouds.children.forEach(c => {
+    c.material.rotation -=0.0002;
+  });
   sun.rotation.y -= .00025;
   sun.rotation.x -= .00015;
   sunHeat.rotation.y += .00045;
