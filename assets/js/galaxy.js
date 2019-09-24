@@ -11,6 +11,7 @@ var cameraCube, sceneCube;
 var textureEquirec;
 var cubeMesh;
 var water, light, sun, sunHeat, clouds;
+var isRaining = false;
 
 init();
 animate();
@@ -63,13 +64,35 @@ function init() {
   var cloudTexture = textureLoader.load("https://cherscarlett.github.io/assets/env/smoke.png");
   for(let i = 0; i < 250; i++) {
     var cloud = new THREE.Sprite( new THREE.SpriteMaterial( { map: cloudTexture, transparent: true, rotation: Math.random() * 360 } ) );
-    cloud.position.set( - Math.random() * 5000 + 3000,- Math.random() * 1000, - Math.random() * 1000 );
+    cloud.position.set( - Math.random() * 5000 + 3000, - Math.random() * 1000, - Math.random() * 1000 );
     cloud.scale.set( 500, 500, 1 );
-    cloud.material.opacity = 0;
+    cloud.material.opacity = .6;
     clouds.add(cloud);
   }
   clouds.rotation.x = Math.PI/2;
   clouds.rotation.z = - Math.PI * 0.1;
+  // Rain
+  rainGeo = new THREE.Geometry();
+  for(let i = 0; i < 10000; i++) {
+    rainDrop = new THREE.Vector3(
+      Math.random() * 10000,
+      Math.random() * 20000,
+      Math.random() * 10000
+    );
+    rainDrop.velocity = {};
+    rainDrop.velocity = 0;
+    rainGeo.vertices.push(rainDrop);
+  }
+  rainMaterial = new THREE.PointsMaterial({
+    color: 0xaaaaaa,
+    size: 1,
+    transparent: true
+  });
+  rain = new THREE.Points(rainGeo, rainMaterial);
+  scene.add(rain);
+  rain.rotation.x = -Math.PI/2.5;
+  rain.position.z = -5000;
+  rain.position.x = -4500;
   // Materials
   var equirectShader = THREE.ShaderLib[ "equirect" ];
   var equirectMaterial = new THREE.ShaderMaterial( {
@@ -122,7 +145,7 @@ function init() {
   controls.enablePan = false;
   controls.maxAzimuthAngle = -2.674;
   controls.minAzimuthAngle = -2.674;
-  controls.maxPolarAngle = 5;
+  controls.maxPolarAngle = 3;
   controls.minPolarAngle = 1.56;
   
   window.addEventListener( "resize", onWindowResize, false );
@@ -153,10 +176,26 @@ function render() {
   clouds.children.forEach(c => {
       if (camera.position.y < 0 && c.material.opacity < 0.6){
         c.material.rotation -=0.0002;
-        c.material.opacity +=0.05;
+        //c.material.opacity +=0.05;
       }
       else if (camera.position.y > 0) {
-        c.material.opacity -=0.05;
+        //c.material.opacity -=0.05;
+        isRaining = false;
       }
-    });
+      if (camera.position.y < -490 && !isRaining) {
+          isRaining = true;
+      }
+      if (isRaining) {
+        rainGeo.vertices.forEach(p => {
+          p.velocity -= 0.1 + Math.random() * 0.1;
+          p.y += p.velocity;
+          if (p.y < -10000) {
+            p.y = 10000;
+            p.velocity = -100;
+          }
+        });
+        
+        rainGeo.verticesNeedUpdate = true;
+      }
+  });
 }
