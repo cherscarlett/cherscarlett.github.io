@@ -141,12 +141,12 @@ function init() {
           waterNormals: textureLoader.load( "https://cherscarlett.github.io/assets/env/water.jpg", function ( texture ) {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
           } ),
-          alpha: 1.0,
+          alpha: 1,
           sunDirection: light.position.clone().normalize(),
-          sunColor: 0xffffff,
-          waterColor: 0x001e0f,
+          sunColor: 0xfd9849,
+          waterColor: 0x000000,
           distortionScale: 3.7,
-          fog: scene.fog !== undefined
+          fog: 0x000000
         }
       );
       water.rotation.x = - Math.PI / 2;
