@@ -104,10 +104,10 @@ function init() {
     sprite = parameters[i][1];
     size   = parameters[i][2];
 
-    materials[i] = new THREE.PointCloudMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true } );
+    materials[i] = new THREE.PointsMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true } );
     materials[i].color.setHSL( color[0], color[1], color[2] );
 
-    rain = new THREE.PointCloud( rainGeo, materials[i] );
+    rain = new THREE.Points( rainGeo, materials[i] );
 
     rain.rotation.z =  Math.random() * 0.20 + 0.10;
     
@@ -181,7 +181,6 @@ function onWindowResize() {
 }
 //
 function animate() {
-	animateRain();
   requestAnimationFrame( animate );
   render();
 }
@@ -206,7 +205,7 @@ function render() {
       if (camera.position.y < -490 && !isRaining) {
           isRaining = true;
       }
-      // if (isRaining) {
+      if (isRaining) {
         rainGeo.vertices.forEach(r => {
           r.velocity -= 0.1 + Math.random() * 0.1;
           r.y += r.velocity;
@@ -217,13 +216,8 @@ function render() {
         });
         
         rainGeo.verticesNeedUpdate = true;
-      // }
+      }
   });
-}
-
-function animateRain() {
-  var time = Date.now() * 0.00005;
-
   for ( i = 0; i < materials.length; i ++ ) {
 
     color = parameters[i][0];
