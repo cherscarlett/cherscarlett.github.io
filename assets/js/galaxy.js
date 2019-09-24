@@ -84,7 +84,7 @@ function init() {
 
     rainDrop = new THREE.Vector3(
       Math.random() * 10000,
-      Math.random() * 5000,
+      Math.random() * 10000,
       Math.random() * 10000
     );
     rainDrop.velocity = {};
@@ -141,12 +141,12 @@ function init() {
           waterNormals: textureLoader.load( "https://cherscarlett.github.io/assets/env/water.jpg", function ( texture ) {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
           } ),
-          alpha: 1,
+          alpha: 1.0,
           sunDirection: light.position.clone().normalize(),
-          sunColor: 0xfd9849,
+          sunColor: 0xffffff,
           waterColor: 0x000000,
           distortionScale: 3.7,
-          fog: 0x000000
+          fog: scene.fog !== undefined
         }
       );
       water.rotation.x = - Math.PI / 2;
@@ -200,19 +200,31 @@ function render() {
         c.material.rotation -=0.0002;
       }
       else if (camera.position.y > 0) {
+        isRaining = false;
+        
       }
-      if (camera.position.y < -490) {
+      if (camera.position.y < -490 && !isRaining) {
+          isRaining = true;
       }
-      rainGeo.vertices.forEach(r => {
-        r.velocity -= 0.001 + Math.random() * 0.01;
-        r.y += r.velocity;
-        if (r.y < -5000) {
+      if (isRaining) {
+        rainGeo.vertices.forEach(r => {
+          r.velocity -= 0.001 + Math.random() * 0.01;
+          r.y += r.velocity;
+          if (r.y < -5000) {
+            r.y = 5000;
+            r.velocity = -50;
+          }
+        });
+        
+        rainGeo.verticesNeedUpdate = true;
+      } else {
+        rainGeo.vertices.forEach(r => {
           r.y = 5000;
-          r.velocity = -50;
-        }
-      });
-
-      rainGeo.verticesNeedUpdate = true;
+          r.velocity = 0;
+        });
+        
+        rainGeo.verticesNeedUpdate = true;
+      }
   });
   for ( i = 0; i < materials.length; i ++ ) {
 
