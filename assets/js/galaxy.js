@@ -80,11 +80,11 @@ function init() {
     spritePath = `https://cherscarlett.github.io/assets/env/rain${i + 1}.png`;
     sprites[i] = textureLoader.load(spritePath);
   }
-  for ( i = 0; i < 20000; i ++ ) {
+  for ( i = 0; i < 7000; i ++ ) {
 
     rainDrop = new THREE.Vector3(
       Math.random() * 10000,
-      Math.random() * 20000,
+      Math.random() * 5000,
       Math.random() * 10000
     );
     rainDrop.velocity = {};
@@ -200,23 +200,19 @@ function render() {
         c.material.rotation -=0.0002;
       }
       else if (camera.position.y > 0) {
-        isRaining = false;
       }
-      if (camera.position.y < -490 && !isRaining) {
-          isRaining = true;
+      if (camera.position.y < -490) {
       }
-      if (isRaining) {
-        rainGeo.vertices.forEach(r => {
-          r.velocity -= 0.1 + Math.random() * 0.1;
-          r.y += r.velocity;
-          if (r.y < -10000) {
-            r.y = 10000;
-            r.velocity = -100;
-          }
-        });
-        
-        rainGeo.verticesNeedUpdate = true;
-      }
+      rainGeo.vertices.forEach(r => {
+        r.velocity -= 0.001 + Math.random() * 0.01;
+        r.y += r.velocity;
+        if (r.y < -5000) {
+          r.y = 5000;
+          r.velocity = -50;
+        }
+      });
+
+      rainGeo.verticesNeedUpdate = true;
   });
   for ( i = 0; i < materials.length; i ++ ) {
 
