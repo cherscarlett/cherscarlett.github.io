@@ -10,7 +10,9 @@ var controls, camera, scene, renderer;
 var cameraCube, sceneCube;
 var textureEquirec;
 var cubeMesh;
-var water, light, sun, sunHeat, clouds;
+var materials = [];
+var rainGeo;
+var water, light, sun, sunHeat, clouds, rain;
 var isRaining = false;
 
 init();
@@ -73,7 +75,13 @@ function init() {
   clouds.rotation.z = - Math.PI * 0.1;
   // Rain
   rainGeo = new THREE.Geometry();
-  for(let i = 0; i < 10000; i++) {
+  var sprites = new Array(5);
+  for (let i = 0; i < 5; i++) {
+    spritePath = `https://cherscarlett.github.io/assets/env/rain${i + 1}.png`;
+    sprites[i] = textureLoader.load(spritePath);
+  }
+  for ( i = 0; i < 20000; i ++ ) {
+
     rainDrop = new THREE.Vector3(
       Math.random() * 10000,
       Math.random() * 20000,
@@ -81,18 +89,32 @@ function init() {
     );
     rainDrop.velocity = {};
     rainDrop.velocity = 0;
-    rainGeo.vertices.push(rainDrop);
+    rainGeo.vertices.push( rainDrop );
   }
-  rainMaterial = new THREE.PointsMaterial({
-    color: 0xaaaaaa,
-    size: 1,
-    transparent: true
-  });
-  rain = new THREE.Points(rainGeo, rainMaterial);
-  scene.add(rain);
-  rain.rotation.x = -Math.PI/2.5;
-  rain.position.z = -5000;
-  rain.position.x = -4500;
+  parameters = [ [ [1.0, 0.2, 0.5], 	sprites[1], 20 ],
+							   [ [0.95, 0.1, 0.5], 	sprites[2], 15 ],
+							   [ [0.90, 0.05, 0.5], sprites[0], 10 ],
+							   [ [0.85, 0, 0.5], 	sprites[4], 8 ],
+							   [ [0.80, 0, 0.5], 	sprites[3], 5 ],
+							   ];
+  
+  for ( i = 0; i < parameters.length; i ++ ) {
+
+    color  = parameters[i][0];
+    sprite = parameters[i][1];
+    size   = parameters[i][2];
+
+    materials[i] = new THREE.PointCloudMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true } );
+    materials[i].color.setHSL( color[0], color[1], color[2] );
+
+    rain = new THREE.PointCloud( rainGeo, materials[i] );
+
+    rain.rotation.z =  Math.random() * 0.20 + 0.10;
+    
+    rain.position.z = -5000;
+    rain.position.x = -4500;
+    scene.add( rain );
+  }
   // Materials
   var equirectShader = THREE.ShaderLib[ "equirect" ];
   var equirectMaterial = new THREE.ShaderMaterial( {
@@ -159,6 +181,7 @@ function onWindowResize() {
 }
 //
 function animate() {
+	animateRain();
   requestAnimationFrame( animate );
   render();
 }
@@ -176,26 +199,37 @@ function render() {
   clouds.children.forEach(c => {
       if (camera.position.y < 0 && c.material.opacity < 0.6){
         c.material.rotation -=0.0002;
-        //c.material.opacity +=0.05;
       }
       else if (camera.position.y > 0) {
-        //c.material.opacity -=0.05;
         isRaining = false;
       }
       if (camera.position.y < -490 && !isRaining) {
           isRaining = true;
       }
-      if (isRaining) {
-        rainGeo.vertices.forEach(p => {
-          p.velocity -= 0.1 + Math.random() * 0.1;
-          p.y += p.velocity;
-          if (p.y < -10000) {
-            p.y = 10000;
-            p.velocity = -100;
+      // if (isRaining) {
+        rainGeo.vertices.forEach(r => {
+          r.velocity -= 0.1 + Math.random() * 0.1;
+          r.y += r.velocity;
+          if (r.y < -10000) {
+            r.y = 10000;
+            r.velocity = -100;
           }
         });
         
         rainGeo.verticesNeedUpdate = true;
-      }
+      // }
   });
+}
+
+function animateRain() {
+  var time = Date.now() * 0.00005;
+
+  for ( i = 0; i < materials.length; i ++ ) {
+
+    color = parameters[i][0];
+
+    h = ( 360 * ( color[0] + time ) % 360 ) / 360;
+    materials[i].color.setHSL( h, color[1], color[2] );
+
+  }
 }
