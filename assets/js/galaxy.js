@@ -12,7 +12,7 @@ var textureEquirec;
 var cubeMesh;
 var materials = [];
 var rainGeo;
-var water, light, sun, sunHeat, clouds, rain;
+var water, light, sun, sunHeat, clouds, rain, lightning;
 var isRaining = false;
 
 init();
@@ -26,9 +26,9 @@ function init() {
   // Scene
   scene = new THREE.Scene();
   sceneCube = new THREE.Scene();
-  //scene.fog = new THREE.FogExp2(0x11111f, 0.002);
+  scene.fog = new THREE.FogExp2(0x11111f, 0.002);
   // Lights
-  var ambient = new THREE.AmbientLight( 0xffffff );
+  var ambient = new THREE.AmbientLight( 0xfd9849 );
   scene.add( ambient );
   // Sun
   var sunGeometry = new THREE.SphereBufferGeometry( 800, 80, 80 );
@@ -36,14 +36,16 @@ function init() {
     color: 0xff51A4,
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_sun-min.jpg"),
     bumpMap:  textureLoader.load("https://cherscarlett.github.io/assets/env/8k_clouds-min.jpg"),
-    bumpScale:   100
+    bumpScale:   100,
+    fog: false
   });
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
   var sunHeatGeometry = new THREE.SphereBufferGeometry(810, 80, 80);
   var sunHeatMaterial = new THREE.MeshBasicMaterial({
     map: textureLoader.load("https://cherscarlett.github.io/assets/env/8k_pink_clouds-min.jpg"),
     transparent: true,
-    opacity: 0.1
+    opacity: 0.1,
+    fog: false
   });
   sunHeat = new THREE.Mesh(sunHeatGeometry, sunHeatMaterial);
   scene.add(sunHeat);
@@ -65,10 +67,10 @@ function init() {
 	scene.add( clouds );
   var cloudTexture = textureLoader.load("https://cherscarlett.github.io/assets/env/smoke.png");
   for(let i = 0; i < 250; i++) {
-    var cloud = new THREE.Sprite( new THREE.SpriteMaterial( { map: cloudTexture, transparent: true, rotation: Math.random() * 360 } ) );
+    var cloud = new THREE.Sprite( new THREE.SpriteMaterial( { map: cloudTexture, transparent: true, rotation: Math.random() * 360, fog: true } ) );
     cloud.position.set( - Math.random() * 5000 + 3000, - Math.random() * 1000, - Math.random() * 1000 );
     cloud.scale.set( 500, 500, 1 );
-    cloud.material.opacity = .6;
+    cloud.material.opacity = .5;
     clouds.add(cloud);
   }
   clouds.rotation.x = Math.PI/2;
