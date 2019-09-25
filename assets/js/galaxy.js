@@ -165,12 +165,12 @@ function init() {
   renderer.gammaOutput = true;
   
   controls = new OrbitControls( camera, renderer.domElement );
-  // controls.enableZoom = false;
-  // controls.enablePan = false;
-  // controls.maxAzimuthAngle = -2.674;
-  // controls.minAzimuthAngle = -2.674;
-  // controls.maxPolarAngle = 3;
-  // controls.minPolarAngle = 1.56;
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  controls.maxAzimuthAngle = -2.674;
+  controls.minAzimuthAngle = -2.674;
+  controls.maxPolarAngle = 3;
+  controls.minPolarAngle = 1.56;
   
   window.addEventListener( "resize", onWindowResize, false );
 }
