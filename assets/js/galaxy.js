@@ -106,7 +106,7 @@ function init() {
     sprite = parameters[i][1];
     size   = parameters[i][2];
 
-    materials[i] = new THREE.PointsMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true } );
+    materials[i] = new THREE.PointsMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true, fog: false } );
     materials[i].color.setHSL( color[0], color[1], color[2] );
 
     rain = new THREE.Points( rainGeo, materials[i] );
