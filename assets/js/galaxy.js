@@ -86,7 +86,7 @@ function init() {
 
     rainDrop = new THREE.Vector3(
       Math.random() * 10000,
-      5000,
+      2000,
       Math.random() * 10000
     );
     rainDrop.velocity = {};
@@ -165,12 +165,12 @@ function init() {
   renderer.gammaOutput = true;
   
   controls = new OrbitControls( camera, renderer.domElement );
-  controls.enableZoom = false;
-  controls.enablePan = false;
-  controls.maxAzimuthAngle = -2.674;
-  controls.minAzimuthAngle = -2.674;
-  controls.maxPolarAngle = 3;
-  controls.minPolarAngle = 1.56;
+  // controls.enableZoom = false;
+  // controls.enablePan = false;
+  // controls.maxAzimuthAngle = -2.674;
+  // controls.minAzimuthAngle = -2.674;
+  // controls.maxPolarAngle = 3;
+  // controls.minPolarAngle = 1.56;
   
   window.addEventListener( "resize", onWindowResize, false );
 }
@@ -210,11 +210,11 @@ function render() {
       }
       if (isRaining) {
         rainGeo.vertices.forEach(r => {
-          r.velocity -= 0.001 + Math.random() * 0.01;
+          r.velocity -= 0.0001 + Math.random();
           r.y += r.velocity;
-          if (r.y < -5000) {
+          if (r.y < -2000) {
             r.y = 5000;
-            r.velocity = -50;
+            r.velocity = 0;
           }
         });
         
