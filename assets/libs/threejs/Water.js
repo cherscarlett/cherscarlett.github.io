@@ -282,7 +282,7 @@ THREE.Water = function ( geometry, options ) {
 
 		var currentRenderTarget = renderer.getRenderTarget();
 
-		var currentXrEnabled = renderer.xr.enabled;
+		//var currentXrEnabled = renderer.xr.enabled;
 		var currentShadowAutoUpdate = renderer.shadowMap.autoUpdate;
 
 		scope.visible = false;
