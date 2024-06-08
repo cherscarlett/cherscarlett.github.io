@@ -7,9 +7,9 @@ const Nav: FunctionComponent = () => (
       <Link href="/" className={styles.nav__home}>
         Home
       </Link>
-      {/* <Link className={styles.nav__link} href="/bio">
+      <Link className={styles.nav__link} href="/biography">
         Biography
-      </Link> */}
+      </Link>
     </nav> 
 )
 
