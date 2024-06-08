@@ -28,11 +28,10 @@ a:hover {
 
 .content {
   background-color: rgba(0, 0, 0, .6);
-  background-image: url(/images/cher2.png);
+  background-image: url(/images/cher2.png), url(/images/jupiter-juno.png), url(/images/ganymede.png);
   background-repeat: no-repeat;
-  background-position: bottom right;
-  background-blend-mode: color-burn;
-  background-size: cover;
+  background-position: bottom right, top center, calc(100% - 50px);
+  background-size: contain, contain, 3%;
   border: 1px solid #494f66;
   padding: 2em;
   position: relative;
