@@ -39,7 +39,7 @@ a:hover {
   width: calc(100vw / 3 * 2.5);
   margin: 2.5em auto;
   z-index: 0;
-  text-shadow: #000 1px 0 10px;
+  text-shadow: #000 0px 0px 5px, #000 0px 0px 10px, #000 0px 0px 15px;
   & p {
       width: 33%;
       min-width: 380px;

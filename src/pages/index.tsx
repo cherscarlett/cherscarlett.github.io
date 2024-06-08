@@ -5,12 +5,11 @@ import { home } from './api/content'
 import Head from 'next/head'
 import Nav from '../components/Nav'
 import Stars from '../components/Stars'
-import HorizontalRule from '../components/HorizontalRule'
 import Loader from '../components/Loader'
 import styles from './index.module.scss'
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
   return { props: { home } }
 }
@@ -54,7 +53,3 @@ const Home: NextPage<Props> = (props) => {
 }
 
 export default Home
-
-// export const config = {
-//   runtime: 'experimental-edge',
-// }
