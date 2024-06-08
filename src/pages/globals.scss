@@ -27,7 +27,7 @@ a:hover {
 }
 
 .content {
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, .6);
   background-image: url(/images/cher2.png);
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -40,6 +40,7 @@ a:hover {
   margin: 2.5em auto;
   z-index: 0;
   text-shadow: #000 0px 0px 5px, #000 0px 0px 10px, #000 0px 0px 15px;
+  backdrop-filter: blur(10px);
   & p {
       width: 33%;
       min-width: 380px;
