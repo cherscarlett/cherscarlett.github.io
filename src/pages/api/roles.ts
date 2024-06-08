@@ -1,0 +1,18 @@
+export default [
+    {title: "Orange Coast College", subtitle: "Planetarium Presenter", dates: "May 2024 - present", type: "science"},
+    {title: "Orange Coast College", subtitle: "Associate of Science in Physics, Mathematics, Astronomy, and Earth and Marine Sciences", dates: "January 2024 - present", type: "education"},
+    {title: "ControlZee", subtitle: "Senior Software Engineer", dates: "March 2022 - April 2023", type: "software"},
+    {title: "The Solidarity Fund by Coworker", subtitle: "Committee Member", dates: "October 2021 - present", type: "volunteer"},
+    {title: "Apple", subtitle: "Principal Software Engineer", dates: "April 2020 - November 2021", type: "software"},
+    {title: "Webflow", subtitle: "Senior Software Engineer", dates: "April 2019 - April 2020", type: "software"},
+    {title: "University of Washington", subtitle: "Instructor", dates: "January 2018 - May 2018", type: "teaching"},
+    {title: "Starbucks", subtitle: "Lead Software Engineer", dates: "November 2017 - April 2019", type: "software"},
+    {title: "World Wide Technology", subtitle: "Senior Software Engineer", dates: "September 2016 - August 2017", type: "software"},
+    {title: "Orange County Probation: OC Grip", subtitle: "Mentor", dates: "August 2015 - August 2016", type: "volunteer"},
+    {title: "Blizzard Entertainment", subtitle: "Software Engineer", dates: "August 2015 - August 2016", type: "software"},
+    {title: "USA Today", subtitle: "Senior Developer, Web & Emerging Platforms", dates: "November 2011 - August 2015", type: "software"},
+    {title: "Operation Food Search", subtitle: "Social Media Coordinator", dates: "January 2011 - October 2011", type: "software"},
+    {title: "Rules Based Medicine", subtitle: "Research Associate", dates: "January 2009 - June 2009", type: "software"},
+    {title: "Neutrino", subtitle: "Front-End Developer", dates: "January 2008 - November 2011", type: "software"},
+    {title: "LuxuryRealEstate.com", subtitle: "Web Developer", dates: "May 2007 - January 2008", type: "software"},
+]

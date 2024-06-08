@@ -1,0 +1,38 @@
+.track {
+    width: calc(23% - 2rem);
+    min-width: 16rem;
+    position: relative;
+    height: 28rem;
+    padding: 1rem;
+    border: 1px solid rgba(233, 233, 255, 0.8);
+    margin: .5rem 0;
+    background-color: transparent;
+    transition: all 600ms ease-in;
+    &:hover {
+        background-color: rgba(233, 233, 255, 0.15);
+    }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border: none;
+        font-size: .9rem;
+        justify-content: space-between;
+    }
+
+    &__metadata {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        &__text {
+            display: block;
+            &:last-of-type {
+                color: rgba(233, 233, 255, 0.8);
+                font-weight: 700;
+                padding-top: .5rem;
+            }
+        }
+    }
+}

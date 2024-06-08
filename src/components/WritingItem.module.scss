@@ -1,0 +1,15 @@
+.writing__item {
+    width: 60%;
+    min-width: 380px;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(233, 233, 255, 0.2);
+    &__metadata {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    h2 {
+        text-transform: none;
+        letter-spacing: 1px;
+    }
+}

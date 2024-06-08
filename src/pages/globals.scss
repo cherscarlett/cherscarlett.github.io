@@ -1,0 +1,55 @@
+:root {
+  --black: #060e2d;
+  --pink: #fc39af;
+}
+
+body {
+  background: var(--black) url('/images/background.jpg') no-repeat top center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: rgba(233, 233, 255, 0.8);
+  font-family: 'Lora', serif;
+  margin: 0;
+  margin-top:7rem;
+}
+
+a {
+  color: var(--pink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  opacity: .9;
+  transition: all 600ms ease-in;
+}
+
+a:hover {
+  opacity: 1;
+  border-color: rgba(252, 57, 175, .7);
+}
+
+.content {
+  background-color: rgba(0, 0, 0, .8);
+  background-image: url(/images/cher2.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-blend-mode: color-burn;
+  background-size: cover;
+  border: 1px solid #494f66;
+  padding: 2em;
+  position: relative;
+  width: calc(100vw / 3 * 2.5);
+  margin: 2.5em auto;
+  z-index: 0;
+  text-shadow: #000 1px 0 10px;
+  & p {
+      width: 33%;
+      min-width: 380px;
+  }
+}
+
+h1, h2 {
+  font-family: 'Reem Kufi', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.9);
+}
