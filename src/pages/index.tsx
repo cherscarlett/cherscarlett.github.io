@@ -52,7 +52,7 @@ const Home: NextPage<Props> = (props) => {
           <div className={styles.content__pbd} onClick={() => setPbd(!pbd)} />
           {pbd ? 
             (<div className={styles.content__sagan}>
-              <iframe width="100%" src="https://www.youtube.com/embed/GO5FwsblpT8?si=xkYXjbJfppNUekWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe width="100%" src="https://www.youtube.com/embed/GO5FwsblpT8?si=xkYXjbJfppNUekWB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               <div className={styles.content__close} onClick={() => setPbd(false)} />
             </div>) : ''}
           <Stars />
