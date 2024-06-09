@@ -31,7 +31,7 @@ const Cv: NextPage<Props> = (props) => {
     { content && roles ? 
         (<div className={classnames('content', styles.content__resume)}>
         <h1>{content.heading}</h1>
-        <a>PDF</a>
+        <a href="/documents/cher_scarlett_cv_2024.pdf" target="_blank">PDF</a>
         <Stars />
     </div>) : (<Loader />)}
     </>
