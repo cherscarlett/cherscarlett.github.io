@@ -7,6 +7,7 @@ import Nav from '../components/Nav'
 import Stars from '../components/Stars'
 import Loader from '../components/Loader'
 import styles from './index.module.scss'
+import { useState } from 'react'
 
 
 export async function getStaticProps() {
@@ -21,6 +22,8 @@ interface Props {
 
 const Home: NextPage<Props> = (props) => {
   const {home: content} = props
+
+  const [pbd, setPbd] = useState(false)
 
   return (
     <>
@@ -46,6 +49,12 @@ const Home: NextPage<Props> = (props) => {
               <a className={styles.social__link} href="mailto:hello@cher.dev">hello@cher.dev</a>.
             </p>
           </div>
+          <div className={styles.content__pbd} onClick={() => setPbd(!pbd)} />
+          {pbd ? 
+            (<div className={styles.content__sagan}>
+              <iframe width="100%" src="https://www.youtube.com/embed/GO5FwsblpT8?si=xkYXjbJfppNUekWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <div className={styles.content__close} onClick={() => setPbd(false)} />
+            </div>) : ''}
           <Stars />
         </div>) : (<Loader />) }
     </>

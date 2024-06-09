@@ -2,3 +2,40 @@
     font-weight: 700;
     letter-spacing: .5px;
 }
+
+.content__pbd {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+}
+
+.content__sagan {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+    border: 1px solid white;
+
+    & iframe {
+        height: 100%;
+    }
+}
+
+.content__close {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 1em;
+    right: 1em;
+    background-image: url(/images/close.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 25%;
+    cursor: pointer;
+    background-color: var(--black);
+}

@@ -8,8 +8,8 @@ export const home = {
     ]
 }
 
-export const resume = {
-    heading: 'Resume',
+export const cv = {
+    heading: 'Curriculum Vitae',
 }
 
 export const biography = {
