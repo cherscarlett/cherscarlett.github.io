@@ -2,7 +2,7 @@ export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
         'I am a student studying physics, mathematics, astronomy, and earth science at Orange Coast College. I work at the planetarium teaching the community about earth, space, and aerospace engineering. I practice observational and computational astronomy.',
-        'My research interests include solar and extrasolar ocean worlds, planetary formation and stellar system evolution, exoplanetary cryospheres, exoplanetary atmospheres, exoplanetary magnetospheres, exomoons, planetary and lunar migration, abiogenisis, paleomagnetism, atmospheric evolution, atmospheric gravity waves, cloud physics, plasma astrophysics, astroparticle physics, stellar seismology, astrospheres, gravity, dark matter, and compact objects.',
+        'My research interests include solar and extrasolar ocean worlds, planetary formation and stellar system evolution, exoplanetary cryospheres, exoplanetary atmospheres, exoplanetary magnetospheres, exomoons, planetary and lunar migration, abiogenisis, paleomagnetism, atmospheric evolution, atmospheric gravity waves, cloud physics, plasma astrophysics, astroparticle physics, stellar seismology, astrospheres, magnetohydrodynamics, gravity, dark matter, and compact objects.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
     ]
