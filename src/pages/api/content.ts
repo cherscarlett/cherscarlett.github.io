@@ -2,7 +2,7 @@ export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
         'I am a student studying physics, mathematics, astronomy, and earth science at Orange Coast College. I work at the planetarium teaching the community about earth, space, and aerospace engineering. I practice observational and computational astronomy.',
-        'My research interests include solar and extrasolar ocean worlds, planetary formation and stellar system evolution, exoplanetary cryospheres, exoplanetary atmospheres, exoplanetary magnetospheres, exomoons, planetary and lunar migration, abiogenisis, paleomagnetism, atmospheric evolution, atmospheric gravity waves, cloud physics, plasma astrophysics, astroparticle physics, stellar seismology, astrospheres, magnetohydrodynamics, gravity, dark matter, and compact objects.',
+        'My research interests include cosmology, plasma physics, paleomagnetism, astroparticle physics, asteroseismology, magnetohydrodynamics, gravity, dark matter, dark energy, and compact objects.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
     ]
@@ -41,7 +41,7 @@ export const biography = {
     paragraphs_3:  [
        'Since then, I\'ve finished my first semester of college at Orange Coast College with Honors and a 4.0 as a Physics major—complete with a 100% in Single Variable Calculus. I am a NASA Community College Aerospace Scholar and am currently a fellow in NASA\'s Lucy Student Pipeline Accelerator and Competency Enabler Grant Proposal Writing Academy. I work at the community planetarium as a presenter, but I am also hard at work in the background with grant proposal writing.',
        'I am a part of leadership in many clubs and helped found the nation\'s first Honor Society for Computer Science students at a two-year college—Iota Xi. I was selected as a Jeannette Rankin National Scholar and won a scholarship from the Orange Coast College foundation as well. I hope during my time in community college I can leave a lasting positive impact for community science and public policy.',
-       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics and Planetary Science. I plan to pursue master\'s degrees in Cryospheric and Atmospheric Sciences and Astrophysics and a doctorate in Earth, Atmospheric, and Planetary Sciences. I ultimately hope to do research with NASA and academic institutions to find and explore ocean worlds and uncover the history of Earth\'s life from the birth of our solar system through the study of other stellar-planetary systems.'
+       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics. I plan to pursue a master\'s degrees in Space and Astrophysics and a doctorate in Plasma Physics. I ultimately hope to do research with NASA and academic institutions to explore and understand the universe and our place in it.'
     ]
 }
 
