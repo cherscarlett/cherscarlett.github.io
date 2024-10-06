@@ -1,8 +1,8 @@
 export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
-        'I am a student studying physics, mathematics, astronomy, and earth science at Orange Coast College. I work at the planetarium teaching the community about earth, space, and aerospace engineering. I practice observational and computational astronomy.',
-        'My research interests include cosmology, plasma physics, magnetospheric physics, astroparticle physics, asteroseismology, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, and compact objects.',
+        'I am a student studying physics, mathematics, and astronomy in Southern California. I work at a planetarium teaching the community about earth, space, and aerospace engineering. I am currently researching gravitational waves in binary black hole systems with the SXS (Simulating eXtreme Spacetimes) Project collaboration with Caltech under the advisement of Maria Onkounkova at Pasadena City College.',
+        'My research interests include cosmology, plasma physics, magnetospheric physics, astroparticle physics, asteroseismology, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
     ]
@@ -39,9 +39,9 @@ export const biography = {
     // ],
     heading_3: 'A Scientist',
     paragraphs_3:  [
-       'Since then, I\'ve finished my first semester of college at Orange Coast College with Honors and a 4.0 as a Physics major—complete with a 100% in Single Variable Calculus. I am a NASA Community College Aerospace Scholar and am currently a fellow in NASA\'s Lucy Student Pipeline Accelerator and Competency Enabler Grant Proposal Writing Academy. I work at the community planetarium as a presenter, but I am also hard at work in the background with grant proposal writing.',
+       'Since then, I\'ve maintained a 4.0-GPA with Honors as a STEM major—complete with a 100% in Single Variable Calculus. I am a NASA Community College Aerospace Scholar and am currently a fellow in NASA\'s Lucy Student Pipeline Accelerator and Competency Enabler Grant Proposal Writing Academy. I work at the community planetarium as a presenter, but I am also hard at work in the background with grant proposal writing.',
        'I am a part of leadership in many clubs and helped found the nation\'s first Honor Society for Computer Science students at a two-year college—Iota Xi. I was selected as a Jeannette Rankin National Scholar and won a scholarship from the Orange Coast College foundation as well. I hope during my time in community college I can leave a lasting positive impact for community science and public policy.',
-       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics. I plan to pursue a master\'s degrees in Space and Astrophysics and a doctorate in Plasma Physics. I ultimately hope to do research with NASA and academic institutions to explore and understand the universe and our place in it.'
+       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA and academic institutions to explore and understand the universe and our place in it... and continue communicating to the public about science.'
     ]
 }
 
