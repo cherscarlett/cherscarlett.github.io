@@ -39,7 +39,7 @@ export const biography = {
     // ],
     heading_3: 'A Scientist',
     paragraphs_3:  [
-       'Since then, I\'ve maintained a 4.0-GPA with Honors as a STEM major—complete with a 100% in Single Variable Calculus. I am a NASA Community College Aerospace Scholar and am currently a fellow in NASA\'s Lucy Student Pipeline Accelerator and Competency Enabler Grant Proposal Writing Academy. I work at the community planetarium as a presenter, but I am also hard at work in the background with grant proposal writing.',
+       'Since then, I\'ve maintained a 4.0-GPA with Honors as a STEM major—complete with a 100% in Single Variable Calculus. I am an alumni of NASA\s Community College Aerospace Scholars and Lucy Student Pipeline Accelerator and Competency Enabler Grant Proposal Writing Academy Programs. I work at the community planetarium as a presenter, but I am also hard at work in the background coding and writing astronomy pre-shows and other stellar tasks.',
        'I am a part of leadership in many clubs and helped found the nation\'s first Honor Society for Computer Science students at a two-year college—Iota Xi. I was selected as a Jeannette Rankin National Scholar and won a scholarship from the Orange Coast College foundation as well. I hope during my time in community college I can leave a lasting positive impact for community science and public policy.',
        'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA and academic institutions to explore and understand the universe and our place in it... and continue communicating to the public about science.'
     ]
