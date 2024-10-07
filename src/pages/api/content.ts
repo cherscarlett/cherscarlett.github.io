@@ -2,7 +2,7 @@ export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
         'I am a student studying physics, mathematics, and astronomy in Southern California. I work at a planetarium teaching the community about cosmology, astronomy, earth and space sciences, and even the space program and aerospace engineering. I am currently researching gravitational waves in binary black hole systems with the SXS (Simulating eXtreme Spacetimes) Project collaboration with Caltech under the advisement of Maria Onkounkova at Pasadena City College.',
-        'My research interests include cosmology, plasma physics, magnetospheric physics, astroparticle physics, asteroseismology, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
+        'My research interests include cosmology, plasma physics, magnetospheric physics, astroparticle physics, asteroseismology, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, mathematical & theoretical physics, numerical relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
     ]
