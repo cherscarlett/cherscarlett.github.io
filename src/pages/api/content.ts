@@ -1,8 +1,8 @@
 export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
-        'I am a student studying physics, mathematics, and astronomy in Southern California. I work at a planetarium teaching the community about cosmology, astronomy, earth and space sciences, and even the space program and aerospace engineering. I am currently researching gravitational waves in binary black hole systems with the SXS (Simulating eXtreme Spacetimes) Project collaboration with Caltech under the advisement of Maria Onkounkova at Pasadena City College.',
-        'My research interests include cosmology, plasma physics, magnetospheric physics, astroparticle physics, nuclear astrophysics, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, mathematical & theoretical physics, numerical relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
+        'I am a student studying physics, mathematics, and astronomy in Southern California. I have had internships at NASA-JPL, Caltech, and working as a teaching assistant for the National Science Foundation within the Earthscope organization.',
+        'My research interests include cosmology, seismology, volcanology, energy engineering, plasma physics, magnetospheric and ionospheric physics, atmospheric physics and climate science, nuclear astrophysics, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, mathematical & theoretical physics, numerical relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
     ]
@@ -39,8 +39,7 @@ export const biography = {
     // ],
     heading_3: 'A Scientist',
     paragraphs_3:  [
-       'Since then, I\'ve maintained a 4.0-GPA with Honors as a STEM major—complete with a 100% in Single Variable Calculus. I am an alumni of NASA\s Community College Aerospace Scholars and Lucy Student Pipeline Accelerator and Competency Enabler Grant Proposal Writing Academy Programs. I work at the community planetarium as a presenter, but I am also hard at work in the background coding and writing astronomy pre-shows and other stellar tasks.',
-       'I am a part of leadership in many clubs and helped found the nation\'s first Honor Society for Computer Science students at a two-year college—Iota Xi. I was selected as a Jeannette Rankin National Scholar and won a scholarship from the Orange Coast College foundation as well. I hope during my time in community college I can leave a lasting positive impact for community science and public policy.',
+       'Since then, I enrolled in community college and I\'ve maintained a 4.0-GPA with Honors as a physics, astronomy, and mathematics major.',
        'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA and academic institutions to explore and understand the universe and our place in it... and continue communicating to the public about science.'
     ]
 }
