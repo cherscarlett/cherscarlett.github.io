@@ -1,7 +1,7 @@
 export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
-        'I am a student studying physics, mathematics, and astronomy in Southern California. I have had internships at NASA-JPL, Caltech, and working as a teaching assistant for the National Science Foundation within the Earthscope organization.',
+        'I am a student studying physics, mathematics, and astronomy in Southern California. I have had internships at NASA-JPL, Caltech, and a position as a teaching assistant for the National Science Foundation within the Earthscope organization.',
         'My research interests include cosmology, seismology, volcanology, energy engineering, plasma physics, magnetospheric and ionospheric physics, atmospheric physics and climate science, nuclear astrophysics, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, mathematical & theoretical physics, numerical relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
