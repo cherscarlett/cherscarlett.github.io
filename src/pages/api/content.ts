@@ -39,7 +39,7 @@ export const biography = {
     heading_3: 'A Scientist',
     paragraphs_3:  [
        'Since then, I enrolled in community college and I\'ve maintained a 4.0-GPA with Honors as a physics, astronomy, and mathematics major. While in community college, I worked at the Orange Coast College Planetarium, had research internships at the NASA Jet Propulsion Laboratory and the California Institution of Technology, and was a Teaching Assistant at Earthscope Consortium.',
-       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics and Earth and Planetary Science. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA, NOAA, and academic institutions to explore and understand the universe and our place in it... and continue communicating to the public about science.'
+       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics and Earth and Planetary Science. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA, NOAA, and academic institutions to explore and understand the universe and our place in it, to help drive societal and environmental stewardship... and continue communicating to the public about science.'
     ]
 }
 
