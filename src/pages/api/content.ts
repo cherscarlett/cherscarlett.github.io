@@ -1,10 +1,10 @@
 export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
-        'I am a student studying physics, mathematics, and astronomy in Southern California. I have had internships at NASA-JPL, Caltech, and a position as a teaching assistant for the National Science Foundation within the Earthscope organization.',
-        'My research interests include cosmology, seismology, volcanology, energy engineering, plasma physics, magnetospheric and ionospheric physics, atmospheric physics and climate science, nuclear astrophysics, magnetohydrodynamics, magnetic mirrors, gravity, dark matter, dark energy, general relativity, mathematical & theoretical physics, numerical relativity, and compact objects such neutron stars, black holes, and otherwise exotic and unusually dense celestial objects.',
+        'I am a student studying physics, mathematics, astronomy, and earth sciences in Southern California. I have had internships at NASA-JPL, Caltech, and a position as a teaching assistant funded by the National Science Foundation at Earthscope Consortium.',
+        'My research interests include plasma physics, particularly the near-earth plasma environment and its impact on atmospheric and climate physics, nuclear astrophysics, magnetohydrodynamics, magnetic mirrors, and gravity. I am also interested personally in unusually dense celestial objects like black holes and neutron stars.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
-        'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights.'
+        'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights and environmental stewardship.'
     ]
 }
 
@@ -15,9 +15,8 @@ export const cv = {
 export const biography = {
     heading: 'About Me',
     paragraphs:  [
-        'I was born in Walla Walla, Washington. I grew up in Southern California and both Eastern and Western Washington. When I was six years old, we moved to Redmond, and spent the rest of my childhood and adolescence moving around the Eastside of the Seattle area, near Microsoft, where I was exposed to science and technology. I tinkered with electronics and computers, constructed science experiments, read encyclopedias and sci fi, and lugged around my favorite book: The Way Things Work by David Macaulay everywhere. I developed into a creative engineer.',
-        'I was in my elementary school\'s gifted program and the namesake of the school made me interested in electricity and plasma science. My young astronauts club teacher was in Amelia Earhart\'s society of women pilots, who introduced me to spaceflight and aviation and left me dreaming of becoming an astronaut. I took classes like video production, engineering, and photoshop in middle school, and a biotechnology class at Juanita High School where we tracked coyote families with their DNA and spliced plasmid vectors from jelly fish and fungi into E. coli. I played flute and clarinet in band, acted in school theatre programs, sang at church, wrote poetry and fiction, painted and took pictures. I was athletic, too—I played basketball and softball, ran track and field, was on flag and drill teams in middle school, and in high school, gymnastics and dance teams. My junior year, I was accepted into a program that allowed students to take college courses for dual credit at Cascadia and Bellevue Community Colleges.',
-        'Shockingly, that promising youth ended in my dropping out of high school. I had moved out my junior year after many tumulutuous years in my homelife and was struggling to make ends meet. My life had been hard and I had no support system. I became a single mother soon afterward and wondered if I could code for a job. As it turned out, I could.'
+        'I was born in Walla Walla, Washington. I grew up in Southern California and both Eastern and Western Washington. When I was six years old, we moved to Redmond, and spent the rest of my childhood and adolescence moving around the Eastside of the Seattle area, near Microsoft, where I was exposed to science and technology. I tinkered with electronics and computers, constructed science experiments, read encyclopedias and science fiction, played online video games, and taught myself to code.',
+        'A promising youth ended in my dropping out of Juanita High School, where I was a running start dual-enrollment student, on Dance and Gymnastics teams, and an AP and Honors student. I had moved out my junior year after many tumulutuous years in my homelife and was struggling to make ends meet. My life had been hard and I had no support system. I became a single mother soon afterward and wondered if I could code for a job. As it turned out, I could.'
     ],
     heading_2: 'A Software Engineer',
     paragraphs_2:  [
@@ -39,8 +38,8 @@ export const biography = {
     // ],
     heading_3: 'A Scientist',
     paragraphs_3:  [
-       'Since then, I enrolled in community college and I\'ve maintained a 4.0-GPA with Honors as a physics, astronomy, and mathematics major.',
-       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA and academic institutions to explore and understand the universe and our place in it... and continue communicating to the public about science.'
+       'Since then, I enrolled in community college and I\'ve maintained a 4.0-GPA with Honors as a physics, astronomy, and mathematics major. While in community college, I worked at the Orange Coast College Planetarium, had research internships at the NASA Jet Propulsion Laboratory and the California Institution of Technology, and was a Teaching Assistant at Earthscope Consortium.',
+       'My goal is to complete my associate\'s degree in science and to transfer to obtain a bachelor\'s of science degree in Astrophysics and Earth and Planetary Science. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA, NOAA, and academic institutions to explore and understand the universe and our place in it... and continue communicating to the public about science.'
     ]
 }
 
