@@ -2,7 +2,7 @@ export const home = {
     heading: 'Cher Scarlett',
     paragraphs:  [
         'I am a student studying physics, mathematics, astronomy, and earth sciences in Southern California. I have had internships at NASA-JPL, Caltech, and a position as a teaching assistant funded by the National Science Foundation at Earthscope Consortium.',
-        'My research interests include plasma physics (particularly the near-earth plasma environment and atmospheric plasmas); space, atmospheric, and climate physics; heliophysics; nuclear and particle astrophysics; the interstellar medium; magnetohydrodynamics; magnetic mirrors; and gravity. I am also interested personally in unusually dense celestial objects like black holes and neutron stars.',
+        'My research interests include plasma physics (particularly the near-earth plasma environment and atmospheric plasmas, but also fusion energy generation and other technological applications); space, atmospheric, and climate physics; heliophysics; nuclear and particle astrophysics; the interstellar medium; magnetohydrodynamics; degenerate materials that generate a magnetic field (i.e., metallic hydrogen); magnetic mirrors; and gravity. I am also interested personally in unusually dense celestial objects like black holes and neutron stars.',
         'I taught myself to code in middle school. I\'ve been programming for more than 20 years and have worked in a variety of industries in large corporations such as Apple, Activision Blizzard, Starbucks, and USA Today.',
         'I care deeply for community and involve myself in public policy and community science. I am a passionate advocate of equitable human rights and environmental stewardship.'
     ]
