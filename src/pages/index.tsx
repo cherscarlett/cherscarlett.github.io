@@ -38,7 +38,7 @@ const Home: NextPage<Props> = (props) => {
             { content.paragraphs?.map((paragraph: string, index) => (<p key={index}>{ paragraph }</p>)) }
             <p>
               Follow me on&nbsp;
-              <a className={styles.social__link} href="https://twitter.com/cherthedev">Twitter</a>,
+              <a className={styles.social__link} href="https://cher.blue">Bluesky</a>,
               &nbsp;
               <a className={styles.social__link} href="https://github.com/cherscarlett">Github</a>,
               or&nbsp;
