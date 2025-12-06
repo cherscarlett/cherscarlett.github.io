@@ -5,11 +5,46 @@
 
 .content__pbd {
     position: absolute;
-    height: 50px;
-    width: 50px;
+    height: 3vw;
+    width: 3vh;
+    min-width: 10px;
+    min-height: 10px;
+    max-width: 20px;
+    max-height: 20px;
     cursor: pointer;
     bottom: 0;
     left: 0;
+    filter: drop-shadow(1px 1px rgba(0, 156, 223, 1));
+    & img {
+        width: 32%;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        display: inline-block;
+        animation: item-glint 2.5s ease-in-out infinite;
+    }
+}
+
+@keyframes item-glint {
+  0%, 70% {
+    filter: brightness(1); 
+  }
+
+  73% {
+    filter: brightness(1.6);    
+  }
+
+  76% {
+    filter: brightness(0.8);    
+  }
+
+  79% {
+    filter: brightness(1.3);    
+  }
+
+  100% {
+    filter: brightness(1);    
+  }
 }
 
 .content__sagan {

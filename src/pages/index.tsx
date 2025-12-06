@@ -49,7 +49,9 @@ const Home: NextPage<Props> = (props) => {
               <a className={styles.social__link} href="mailto:hello@cher.dev">hello@cher.dev</a>.
             </p>
           </div>
-          <div title="That's here. That's home. That's us." className={styles.content__pbd} onClick={() => setPbd(!pbd)} />
+          <div title="That's here. That's home. That's us." className={styles.content__pbd} onClick={() => setPbd(!pbd)}>
+            <img src='/images/earth.png' alt="Pale Blue Dot" />
+          </div>
           {pbd ? 
             (<div className={styles.content__sagan}>
               <iframe width="100%" src="https://www.youtube.com/embed/GO5FwsblpT8?si=xkYXjbJfppNUekWB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
