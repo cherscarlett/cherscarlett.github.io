@@ -31,7 +31,9 @@ const Home: NextPage<Props> = (props) => {
   const handleEnter = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0
-      audioRef.current.play()
+      audioRef.current.play().catch((err) => {
+        console.log("Hey! Listen! You have sound disabled, but if you click the Pale Blue Dot, you'll find Carl Sagan speaking about our tiny home in the vastness of space.")
+      })
     }
   };
 
