@@ -7,7 +7,7 @@ import Nav from '../components/Nav'
 import Stars from '../components/Stars'
 import Loader from '../components/Loader'
 import styles from './index.module.scss'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 
 export async function getStaticProps() {
@@ -24,6 +24,16 @@ const Home: NextPage<Props> = (props) => {
   const {home: content} = props
 
   const [pbd, setPbd] = useState(false)
+
+
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  const handleEnter = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0
+      audioRef.current.play()
+    }
+  };
 
   return (
     <>
@@ -49,8 +59,9 @@ const Home: NextPage<Props> = (props) => {
               <a className={styles.social__link} href="mailto:hello@cher.dev">hello@cher.dev</a>.
             </p>
           </div>
-          <div title="That's here. That's home. That's us." className={styles.content__pbd} onClick={() => setPbd(!pbd)}>
+          <div title="That's here. That's home. That's us." className={styles.content__pbd} onClick={() => setPbd(!pbd)} onMouseEnter={handleEnter}>
             <img src='/images/earth.png' alt="Pale Blue Dot" />
+            <audio ref={audioRef} id="hover-sound" src="/navi.mp3" preload="auto"></audio>
           </div>
           {pbd ? 
             (<div className={styles.content__sagan}>
