@@ -1,55 +1,31 @@
-:root {
-  --black: #060e2d;
-  --pink: #fc39af;
-}
 
 body {
-  background: var(--black) url('/images/background.jpg') no-repeat top center;
-  background-size: cover;
-  background-attachment: fixed;
-  color: rgba(233, 233, 255, 0.8);
-  font-family: 'Lora', serif;
-  margin: 0;
-  margin-top:7rem;
+  background-color: white;
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 a {
-  color: var(--pink);
+  color: black;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   opacity: .9;
   transition: all 600ms ease-in;
-}
-
-a:hover {
-  opacity: 1;
-  border-color: rgba(252, 57, 175, .7);
+  font-weight: bold;
 }
 
 .content {
-  background-color: rgba(0, 0, 0, .6);
-  background-image: url(/images/cher2.png), url(/images/jupiter-juno.png), url(/images/ganymede.png);
-  background-repeat: no-repeat;
-  background-position: bottom right, top center, calc(100% - 50px);
-  background-size: contain, contain, 3%, 0.5%;
-  border: 1px solid #494f66;
-  padding: 2em;
-  position: relative;
-  width: calc(100vw / 3 * 2.5);
-  margin: 2.5em auto;
-  z-index: 0;
-  text-shadow: #000 0px 0px 5px, #000 0px 0px 10px, #000 0px 0px 15px;
-  backdrop-filter: blur(10px);
-  & p {
-      width: 33%;
-      min-width: 300px;
-  }
+  padding-top: 70px;
+  padding-left:10vw;
+  width: 70vw;
+  min-width: 400px;
+  max-width: 900px;
 }
 
 h1, h2 {
-  font-family: 'Reem Kufi', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .5rem;
-  font-weight: 700;
-  color: rgba(255,255,255,.9);
+  font-family: "Quintessential", serif;
+  font-weight: 400;
+  font-style: normal;
 }

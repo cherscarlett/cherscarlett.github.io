@@ -29,9 +29,5 @@
     width: 30px;
     z-index: 1;
     background-size: contain;
-}
-
-.nav__home:active, .nav__home:hover {
-    border-color: transparent;
-    filter: drop-shadow(0px 0px 5px var(--pink)) drop-shadow(0px 0px 10px var(--pink));
+    filter: invert(1);
 }

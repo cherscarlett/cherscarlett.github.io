@@ -9,8 +9,8 @@ const Document = () => {
         <link href="/favico_32.png" rel="apple-touch-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet"></link>
         <link rel="preload" href="/images/background.jpg" as="image"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Quintessential&display=swap" rel="stylesheet"></link>
       </Head>
       <body>
         <Main />

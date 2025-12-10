@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import type { NextPage } from 'next'
-import type {Content} from './api/content'
-import { home } from './api/content'
+import type {Content} from '../api/content'
+import { home } from '../api/content'
 import Head from 'next/head'
 import Nav from '../components/Nav'
 import Stars from '../components/Stars'
@@ -24,18 +24,6 @@ const Home: NextPage<Props> = (props) => {
   const {home: content} = props
 
   const [pbd, setPbd] = useState(false)
-
-
-  const audioRef = useRef<HTMLAudioElement>(null)
-
-  const handleEnter = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0
-      audioRef.current.play().catch((err) => {
-        console.log("Hey! Listen! You have sound disabled, but if you click the Pale Blue Dot, you'll find Carl Sagan speaking about our tiny home in the vastness of space.")
-      })
-    }
-  };
 
   return (
     <>
@@ -61,16 +49,7 @@ const Home: NextPage<Props> = (props) => {
               <a className={styles.social__link} href="mailto:hello@cher.dev">hello@cher.dev</a>.
             </p>
           </div>
-          <div title="That's here. That's home. That's us." className={styles.content__pbd} onClick={() => setPbd(!pbd)} onMouseEnter={handleEnter}>
-            <img src='/images/earth.png' alt="Pale Blue Dot" />
-            <audio ref={audioRef} id="hover-sound" src="/navi.mp3" preload="auto"></audio>
-          </div>
-          {pbd ? 
-            (<div className={styles.content__sagan}>
-              <iframe width="100%" src="https://www.youtube.com/embed/GO5FwsblpT8?si=xkYXjbJfppNUekWB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-              <div className={styles.content__close} onClick={() => setPbd(false)} />
-            </div>) : ''}
-          <Stars />
+          <p>Go listen to a wise man named <a href='https://www.youtube.com/embed/GO5FwsblpT8'>Carl Sagan</a>.</p>
         </div>) : (<Loader />) }
     </>
   )
