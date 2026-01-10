@@ -1,0 +1,16 @@
+{
+    // استخدم IntelliSense لمعرفة الخصائص الممكنة.
+    // مرر الماوس لرؤية أوصاف الخصائص الموجودة.
+    // لمزيد من المعلومات، يرجى زيارة: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "إطلاق Chrome ضد localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
