@@ -38,7 +38,7 @@ export const biography = {
     // ],
     heading_3: 'A Scientist',
     paragraphs_3:  [
-       'Since then, I graduated Summa Cum Laude from Orange Coast College with Associate of Science degrees in astronomy, physics, mathematics, and natural science. While there, I worked at the Orange Coast College Planetarium, had research internships at the NASA Jet Propulsion Laboratory, the California Institution of Technology, the University of California, Berkeley; and was a Teaching Assistant, and later an education intern, at Earthscope Consortium, funding by the NSF National Geophysical Facility (NGF).',
+       'Since then, I graduated Summa Cum Laude from Orange Coast College with Associate of Science degrees in astronomy, physics, mathematics, and natural science. While there, I worked at the Orange Coast College Planetarium, had research internships at the NASA Jet Propulsion Laboratory, the California Institution of Technology, and the University of California, Berkeley; and was a Teaching Assistant, and later an education intern, at Earthscope Consortium, funding by the NSF National Geophysical Facility (NGF).',
        'I am currently a student at Wellesley College studying astrophysics with a minor in education studies; I am cross-enrolled at MIT taking atmospheric physics and dynamics coursework. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA, NOAA, and academic institutions to explore and understand the universe and our place in it, to help drive societal and environmental stewardship... and continue communicating to the public about science.'
     ]
 }
