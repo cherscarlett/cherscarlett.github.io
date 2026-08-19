@@ -11,7 +11,7 @@ const Nav: FunctionComponent = () => (
     </div>
 
     <div className={styles.brand}>
-      <Link href="/" className={styles.swanMark} aria-label="Cher Scarlett home">
+      <span className={styles.swanMark} aria-label="Cher Scarlett">
         <img
           src="/images/swan.png"
           alt=""
@@ -19,9 +19,9 @@ const Nav: FunctionComponent = () => (
           height="1254"
           decoding="async"
         />
-      </Link>
+      </span>
 
-      <Link href="/" className={styles.wordmark} aria-label="Cher Swan Scarlett home">
+      <span className={styles.wordmark} aria-label="Cher Swan Scarlett">
         <img
           src="/images/masthead.png"
           alt="Cher Swan Scarlett"
@@ -29,7 +29,7 @@ const Nav: FunctionComponent = () => (
           height="335"
           decoding="async"
         />
-      </Link>
+      </span>
     </div>
 
     <nav className={styles.nav} aria-label="Primary navigation">
