@@ -36,7 +36,7 @@ const Nav: FunctionComponent = () => (
       <Link className={styles.nav__link} href="/biography">Biography</Link>
       <Link className={styles.nav__home} href="/">Front Page</Link>
       <Link className={styles.nav__link} href="/cv">CV</Link>
-      <Link className={styles.nav__link} href="//orcid.org/0009-0007-8532-9874">ORCiD</Link>
+      <a className={styles.nav__link} href="https://orcid.org/0009-0007-8532-9874">ORCiD</a>
     </nav>
   </header>
 )
