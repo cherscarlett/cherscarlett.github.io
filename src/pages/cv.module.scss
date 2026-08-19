@@ -1,7 +1,17 @@
 .content__resume {
     background-image: none;
-    
-    & p {
-        width: 67%;
+    text-align: center;
+
+    & > a {
+        display: inline-block;
+        margin: 0 .25rem;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: .78rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
     }
+}
+
+.social__link {
+    font-weight: 700;
 }

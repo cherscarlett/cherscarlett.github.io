@@ -1,5 +1,5 @@
 export const home = {
-    heading: 'Cher Scarlett',
+    heading: 'Hello, World',
     paragraphs:  [
         'I am an astrophysics student at Wellesley College. I have had research assistantships at NASA-JPL, Caltech, and UC Berkeley. I held a position as a teaching assistant, and later an education intern, at Earthscope Consortium funded by the NSF National Geophysical Facility. I also had my extra-curricular studies in computational plasma physics with the Computational Research Access Network funded by Bryn Mawr College and have received scholarships from the American Institute of Physics, the National Science Foundation, and several philanthropic organizations.',
         'My research interests include plasma physics (particularly the near-earth plasma environment and atmospheric plasmas, but also fusion energy generation and other technological applications); space, atmospheric, and climate physics; heliophysics; nuclear and particle astrophysics; the interstellar medium; magnetohydrodynamics; degenerate materials that generate a magnetic field (i.e., metallic hydrogen); magnetic mirrors; gravity; and applying seismological principles to other energetic phenomena. I am also interested personally in unusually dense celestial objects like black holes and neutron stars.',
@@ -39,7 +39,7 @@ export const biography = {
     heading_3: 'A Scientist',
     paragraphs_3:  [
        'Since then, I graduated Summa Cum Laude from Orange Coast College with Associate of Science degrees in astronomy, physics, mathematics, and natural science. While there, I worked at the Orange Coast College Planetarium, had research internships at the NASA Jet Propulsion Laboratory, the California Institution of Technology, and the University of California, Berkeley; and was a Teaching Assistant, and later an education intern, at Earthscope Consortium, funded by the NSF National Geophysical Facility (NGF).',
-       'I am currently a student at Wellesley College studying astrophysics with a minor in education studies; I am cross-enrolled at MIT taking atmospheric physics and dynamics coursework. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA, NOAA, and academic institutions to explore and understand the universe and our place in it, to help drive societal and environmental stewardship... and continue communicating to the public about science.'
+       'I am currently a student at Wellesley College studying astrophysics with a minor in education studies; I am cross-enrolled at MIT taking atmospheric physics and dynamics coursework. I ultimately plan to pursue a graduate doctoral degree. My hope is to do research with NASA, NOAA, and academic institutions to explore and understand the universe and our place in it, to help drive societal and environmental stewardship... and continue communicating to the public about science. I also plan to teach dual enrollment courses at a community college to address the shortage of physics teachers.'
     ]
 }
 

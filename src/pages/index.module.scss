@@ -1,0 +1,44 @@
+.content__home {
+  & h1 {
+    text-transform: uppercase;
+    letter-spacing: .045em;
+  }
+
+  & > div {
+    column-count: 2;
+    column-gap: clamp(2rem, 5vw, 4rem);
+    column-rule: 1px solid rgba(23, 19, 15, .45);
+  }
+
+  & > div > p:first-child::first-letter {
+    float: left;
+    margin: .08em .1em 0 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 4.7rem;
+    font-weight: 700;
+    line-height: .72;
+  }
+
+  & > p:last-child {
+    margin-top: 2.1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 4px double var(--ink);
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+.social__link {
+  font-variant: small-caps;
+  letter-spacing: .035em;
+}
+
+@media (max-width: 760px) {
+  .content__home {
+    & > div {
+      column-count: 1;
+      column-rule: 0;
+    }
+  }
+}

@@ -1,7 +1,24 @@
 .content__biography {
     background-image: none;
-    
-    & p {
-        width: 67%;
+
+    & > p {
+        width: 100%;
+        max-width: 72ch;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    & > p:first-of-type::first-letter {
+        float: left;
+        margin: .08em .1em 0 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 4.6rem;
+        font-weight: 700;
+        line-height: .72;
+    }
+
+    & h2 {
+        text-transform: uppercase;
+        letter-spacing: .06em;
     }
 }
